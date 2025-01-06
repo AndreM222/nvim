@@ -18,6 +18,15 @@ return {
             local fb_actions = require "telescope".extensions.file_browser.actions
             local themes = require("telescope.themes")
 
+            local function getPath(entry)
+                local cb_opts = vim.opt.clipboard:get()
+                if vim.tbl_contains(cb_opts, "unnamed") then vim.fn.setreg("*", entry.path) end
+                if vim.tbl_contains(cb_opts, "unnamedplus") then
+                    vim.fn.setreg("+", entry.path)
+                end
+                vim.fn.setreg("", entry.path)
+            end
+
             telescope.setup {
                 defaults = {
                     mappings = {
@@ -68,7 +77,21 @@ return {
                         results_title = Msgstr("Results"),
                         preview_title = Msgstr("Grep Preview"),
                         no_ignore = false,
-                        hidden = true
+                        hidden = true,
+                        mappings = {
+                            ["n"] = {
+                                ["<C-y>"] = function()
+                                    local entry = require("telescope.actions.state").get_selected_entry()
+                                    return getPath(entry)
+                                end
+                            },
+                            ["i"] = {
+                                ["<C-y>"] = function()
+                                    local entry = require("telescope.actions.state").get_selected_entry()
+                                    return getPath(entry)
+                                end
+                            }
+                        }
                     }
                 },
                 extensions = {
@@ -90,6 +113,10 @@ return {
                             -- Insert
                             ["i"] = {
                                 ["<C-w>"] = function() vim.cmd('normal vbd') end,
+                                ["<C-y>"] = function()
+                                    local entry = require("telescope.actions.state").get_selected_entry()
+                                    return getPath(entry)
+                                end
                             },
                             ["n"] = {
                                 -- Custom normal mode mappings
@@ -102,8 +129,12 @@ return {
                                 ["x"] = actions.select_horizontal,
                                 ["/"] = function()
                                     vim.cmd('startinsert')
+                                end,
+                                ["<C-y>"] = function()
+                                    local entry = require("telescope.actions.state").get_selected_entry()
+                                    return getPath(entry)
                                 end
-                            }
+                            },
                         }
                     }
                 }

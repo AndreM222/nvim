@@ -70,4 +70,4 @@ vim.opt.foldenable = true
 vim.opt.foldcolumn = "1"
 
 vim.opt.statuscolumn =
-'%s%=%{&nu? (&rnu? (v:relnum?v:relnum:v:lnum) : v:lnum) : ""} %{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " " } '
+'%s%=%{&nu? (&rnu? (v:relnum?v:relnum:v:lnum) : v:lnum) : ""} %{&foldenable? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? " " : " ") : "  ") : ""}'
