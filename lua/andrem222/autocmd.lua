@@ -114,5 +114,6 @@ autocmd("TermOpen", {
         vim.opt.number = false
         vim.opt.relativenumber = false
         vim.opt.foldenable = false
+        vim.opt.signcolumn = "no"
     end,
 })
