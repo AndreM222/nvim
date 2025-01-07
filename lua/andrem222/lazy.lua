@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     dev = { -- Import Plugins being developed
-        path = "~/.ghq"
+        path = "~/.ghq/github.com/AndreM222"
     },
 
     spec = {
