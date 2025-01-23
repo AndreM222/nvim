@@ -18,15 +18,23 @@
 
 - Nerd Fonts >= 3.0
 
+- Chafa (Image support for telescope preview)
+
 ## Setup ⚒️
 
-##### Scoop - Needs Installation
+##### Scoop - Needs Installation [Windows]
 
 - [Fira-Font](https://github.com/ryanoasis/nerd-fonts) - `scoop install FiraCode-NF-Mono`
 
 <div align=center>or</div>
 
 - [Fira-Font](https://formulae.brew.sh/cask/font-fira-code-nerd-font#default) - `brew install --casck font-fira-code-nerd-font`
+
+- [Chafa](https://formulae.brew.sh/formula/chafa#default) - `brew install chafa`
+
+##### Brew - Needs Installation [MacOS]
+
+- [Chafa]()
 
 ## Neovim Plugins 📲
 

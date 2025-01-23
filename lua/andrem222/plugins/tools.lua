@@ -33,7 +33,44 @@ return {
                         n = {
                             ["q"] = actions.close
                         }
+                    },
+
+                    -- Come back on neovim 0.11 for image API
+                    preview = {
+                        mime_hook = function(filepath, bufnr, opts)
+                            local is_image = function(filepath)
+                                local image_extensions = {'png','jpg'}   -- Supported image formats
+                                local split_path = vim.split(filepath:lower(), '.', {plain=true})
+                                local extension = split_path[#split_path]
+                                return vim.tbl_contains(image_extensions, extension)
+                            end
+                            if is_image(filepath) then
+                                local height = vim.api.nvim_win_get_height(opts.winid)
+                                local width = vim.api.nvim_win_get_width(opts.winid)
+                                local term = vim.api.nvim_open_term(bufnr, {})
+                                local function send_output(_, data, _ )
+                                    for _, d in ipairs(data) do
+                                        vim.api.nvim_chan_send(term, d..'\r\n')
+                                    end
+                                end
+
+                                vim.fn.jobstart(
+                                    {
+                                        "chafa",
+                                        "--center=on",
+                                        "--clear",
+                                        "--format=symbols",
+                                        "--view-size=" .. width .. "x" .. height,
+                                        "--scale=max",
+                                        filepath  -- Terminal image viewer command
+                                    },
+                                    {on_stdout=send_output, stdout_buffered=true, pty=true})
+                            else
+                                require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid, "Binary cannot be previewed")
+                            end
+                        end
                     }
+                    -- Come back on neovim 0.11 for image API
                 },
 
                 pickers = {
