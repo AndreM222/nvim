@@ -20,19 +20,49 @@ return {
 
             local function getPath(entry)
                 local cb_opts = vim.opt.clipboard:get()
-                if vim.tbl_contains(cb_opts, "unnamed") then vim.fn.setreg("*", entry.path) end
-                if vim.tbl_contains(cb_opts, "unnamedplus") then
-                    vim.fn.setreg("+", entry.path)
-                end
-                vim.fn.setreg("", entry.path)
+                vim.fn.setreg(vim.v.register, entry[1])
+                vim.notify("The path has been copied" .. entry[1])
             end
 
             telescope.setup {
                 defaults = {
                     mappings = {
                         n = {
-                            ["q"] = actions.close
-                        }
+                            ["q"] = actions.close,
+
+                            ["O"] = function()
+                                local fn = vim.fn
+                                local cmd
+                                if vim.fn.has('mac') == 1 then
+                                    cmd = '!open'
+                                    print("macy")
+                                elseif vim.fn.has('win32') == 1 then
+                                    cmd = '!explorer'
+                                elseif vim.fn.executable('wslview') == 1 then
+                                    cmd = '!wslview'
+                                elseif vim.fn.executable('xdg-open') == 1 then
+                                    cmd = '!xdg-open'
+                                else
+                                    print("Invalid")
+                                    return -1;
+                                end
+
+                                local entry = require("telescope.actions.state").get_selected_entry().path
+
+                                fn.execute(cmd .. ' ' .. entry)
+                            end,
+
+                            ["<C-y>"] = function()
+                                local entry = require("telescope.actions.state").get_selected_entry()
+                                return getPath(entry)
+                            end
+                        },
+                        i = {
+                            ["<C-y>"] = function()
+                                local entry = require("telescope.actions.state").get_selected_entry()
+                                return getPath(entry)
+                            end
+                        },
                     },
 
                     -- Come back on neovim 0.11 for image API
@@ -114,21 +144,7 @@ return {
                         results_title = Msgstr("Results"),
                         preview_title = Msgstr("Grep Preview"),
                         no_ignore = false,
-                        hidden = true,
-                        mappings = {
-                            ["n"] = {
-                                ["<C-y>"] = function()
-                                    local entry = require("telescope.actions.state").get_selected_entry()
-                                    return getPath(entry)
-                                end
-                            },
-                            ["i"] = {
-                                ["<C-y>"] = function()
-                                    local entry = require("telescope.actions.state").get_selected_entry()
-                                    return getPath(entry)
-                                end
-                            }
-                        }
+                        hidden = true
                     }
                 },
                 extensions = {
@@ -149,11 +165,7 @@ return {
                         mappings = {
                             -- Insert
                             ["i"] = {
-                                ["<C-w>"] = function() vim.cmd('normal vbd') end,
-                                ["<C-y>"] = function()
-                                    local entry = require("telescope.actions.state").get_selected_entry()
-                                    return getPath(entry)
-                                end
+                                ["<C-w>"] = function() vim.cmd('normal vbd') end
                             },
                             ["n"] = {
                                 -- Custom normal mode mappings
@@ -166,10 +178,6 @@ return {
                                 ["x"] = actions.select_horizontal,
                                 ["/"] = function()
                                     vim.cmd('startinsert')
-                                end,
-                                ["<C-y>"] = function()
-                                    local entry = require("telescope.actions.state").get_selected_entry()
-                                    return getPath(entry)
                                 end
                             },
                         }
