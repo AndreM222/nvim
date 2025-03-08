@@ -1,7 +1,14 @@
 return {
     {
         "lervag/vimtex",
-        lazy = false     -- we don't want to lazy load VimTeX
+        lazy = false,     -- we don't want to lazy load VimTeX
+        config = function()
+            vim.g.vimtex_compiler_latexmk = { -- added for svg
+                options = {
+                    "-shell-escape"
+                },
+            }
+        end,
     },
     -- Markdown Previewer
     {

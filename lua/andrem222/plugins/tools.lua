@@ -21,7 +21,7 @@ return {
             local function getPath(entry)
                 local cb_opts = vim.opt.clipboard:get()
                 vim.fn.setreg(vim.v.register, entry[1])
-                vim.notify("The path has been copied" .. entry[1])
+                vim.notify("The path has been copied " .. entry[1])
             end
 
             telescope.setup {

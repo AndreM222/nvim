@@ -183,6 +183,12 @@ return {
                 capabilities = capabilities
             })
 
+            -- svelete
+            nvim_lsp.svelte.setup({
+                on_attach = on_attach,
+                capabilities = capabilities
+            })
+
             -- CSS
             nvim_lsp.cssls.setup({
                 on_attach = on_attach,
@@ -226,6 +232,7 @@ return {
                 ensure_installed = {
                     "markdown",
                     "markdown_inline",
+                    "svelte",
                     "tsx",
                     "toml",
                     "php",
@@ -338,13 +345,12 @@ return {
                                 and params.options.tabSize
                                 and {
                                     "--tab-width",
-                                    params.options.tabSize,
+                                    "2",
                                     "--trailing-comma",
                                     "none",
                                     "--no-semi",
                                     "--arrow-parens",
-                                    "avoid",
-                                    "--single-quote",
+                                    "avoid"
                                 }
                         end,
                     }),
