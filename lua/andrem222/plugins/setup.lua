@@ -183,12 +183,6 @@ return {
                 capabilities = capabilities
             })
 
-            -- svelete
-            nvim_lsp.svelte.setup({
-                on_attach = on_attach,
-                capabilities = capabilities
-            })
-
             -- CSS
             nvim_lsp.cssls.setup({
                 on_attach = on_attach,
@@ -232,7 +226,6 @@ return {
                 ensure_installed = {
                     "markdown",
                     "markdown_inline",
-                    "svelte",
                     "tsx",
                     "toml",
                     "php",

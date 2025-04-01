@@ -65,7 +65,7 @@ return {
                         },
                     },
 
-                    -- Come back on neovim 0.11 for image API
+                    -- Come back on neovim 0.12 for image API
                     preview = {
                         mime_hook = function(filepath, bufnr, opts)
                             local is_image = function(filepath)
@@ -100,7 +100,7 @@ return {
                             end
                         end
                     }
-                    -- Come back on neovim 0.11 for image API
+                    -- Come back on neovim 0.12 for image API
                 },
 
                 pickers = {

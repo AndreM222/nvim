@@ -14,7 +14,7 @@
 
 ## Dependencies 📃
 
-- Neovim >= 0.10.0 (needs to be built with LuaJIT)
+- Neovim >= 0.11.0 (needs to be built with LuaJIT)
 
 - Nerd Fonts >= 3.0
 

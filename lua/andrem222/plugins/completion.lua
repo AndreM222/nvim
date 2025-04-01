@@ -73,7 +73,7 @@ return {
             })
 
             vim.cmd [[
-    set completeopt=menuone,noinsert,noselect
+    set completeopt=menuone,noinsert,noselect,fuzzy
     highlight! default link cmpitemkind cmpitemmenudefault
 ]]
         end

@@ -12,7 +12,8 @@ function CopilotIcon()
                         unknown = ""
                     }
                 }
-            }
+            },
+            -- show_colors = true
         }
 
     end
