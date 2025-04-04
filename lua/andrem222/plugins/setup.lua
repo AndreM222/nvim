@@ -89,7 +89,7 @@ return {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 init_options = {
-                    fallbackFlags = {'-std=c++20'}
+                    fallbackFlags = { '-std=c++20' }
                 }
             })
 
@@ -207,7 +207,15 @@ return {
             local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
             for type, icon in pairs(signs) do
                 local hl = "DiagnosticSign" .. type
+                local textType = string.upper(type)
                 vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+                vim.diagnostic.config({
+                    signs = {
+                        text = { [vim.diagnostic.severity[textType]] = icon },
+                        texthl = { [vim.diagnostic.severity[textType]] = hl },
+                        numhl = { [vim.diagnostic.severity[textType]] = "" }
+                    }
+                })
             end
 
             -- Setup diagnostic symbol
@@ -293,7 +301,7 @@ return {
                 automatic_setup = true
             })
 
-            require'lspconfig'.texlab.setup{}
+            require 'lspconfig'.texlab.setup {}
             -- Setup lspconfig on mason
             require("mason-lspconfig").setup({
                 ensure_installed = {

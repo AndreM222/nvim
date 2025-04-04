@@ -22,6 +22,7 @@ dracula.setup({
         FloatBorder = { fg = dracula.colors().comment },
         VertSplit = { fg = dracula.colors().comment },
         WinSeparator = { fg = dracula.colors().comment },
+        WinBar = { fg = "NONE", bg = "NONE" },
 
         -- Missing fg color and extra setup
         IblScope = { fg = dracula.colors().comment, nocombine = true },
