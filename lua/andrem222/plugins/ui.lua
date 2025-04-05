@@ -10,42 +10,42 @@ return {
             cozynight.visual.b.fg = '#ffb85c'
 
             require('lualine.utils.mode').map = {
-                ['n']      = Msgstr('NORMAL'),
-                ['no']     = Msgstr('O-PENDING'),
-                ['nov']    = Msgstr('O-PENDING'),
-                ['noV']    = Msgstr('O-PENDING'),
-                ['no\22']  = Msgstr('O-PENDING'),
-                ['niI']    = Msgstr('NORMAL'),
-                ['niR']    = Msgstr('NORMAL'),
-                ['niV']    = Msgstr('NORMAL'),
-                ['nt']     = Msgstr('NORMAL'),
-                ['ntT']    = Msgstr('NORMAL'),
-                ['v']      = Msgstr('VISUAL'),
-                ['vs']     = Msgstr('VISUAL'),
-                ['V']      = Msgstr('V-LINE'),
-                ['Vs']     = Msgstr('V-LINE'),
-                ['\22']    = Msgstr('V-BLOCK'),
-                ['\22s']   = Msgstr('V-BLOCK'),
-                ['s']      = Msgstr('SELECT'),
-                ['S']      = Msgstr('S-LINE'),
-                ['\19']    = Msgstr('S-BLOCK'),
-                ['i']      = Msgstr('INSERT'),
-                ['ic']     = Msgstr('INSERT'),
-                ['ix']     = Msgstr('INSERT'),
-                ['R']      = Msgstr('REPLACE'),
-                ['Rc']     = Msgstr('REPLACE'),
-                ['Rx']     = Msgstr('REPLACE'),
-                ['Rv']     = Msgstr('V-REPLACE'),
-                ['Rvc']    = Msgstr('V-REPLACE'),
-                ['Rvx']    = Msgstr('V-REPLACE'),
-                ['c']      = Msgstr('COMMAND'),
-                ['cv']     = Msgstr('EX'),
-                ['ce']     = Msgstr('EX'),
-                ['r']      = Msgstr('REPLACE'),
-                ['rm']     = Msgstr('MORE'),
-                ['r?']     = Msgstr('CONFIRM'),
-                ['!']      = Msgstr('SHELL'),
-                ['t']      = Msgstr('TERMINAL'),
+                ['n']     = Msgstr('NORMAL'),
+                ['no']    = Msgstr('O-PENDING'),
+                ['nov']   = Msgstr('O-PENDING'),
+                ['noV']   = Msgstr('O-PENDING'),
+                ['no\22'] = Msgstr('O-PENDING'),
+                ['niI']   = Msgstr('NORMAL'),
+                ['niR']   = Msgstr('NORMAL'),
+                ['niV']   = Msgstr('NORMAL'),
+                ['nt']    = Msgstr('NORMAL'),
+                ['ntT']   = Msgstr('NORMAL'),
+                ['v']     = Msgstr('VISUAL'),
+                ['vs']    = Msgstr('VISUAL'),
+                ['V']     = Msgstr('V-LINE'),
+                ['Vs']    = Msgstr('V-LINE'),
+                ['\22']   = Msgstr('V-BLOCK'),
+                ['\22s']  = Msgstr('V-BLOCK'),
+                ['s']     = Msgstr('SELECT'),
+                ['S']     = Msgstr('S-LINE'),
+                ['\19']   = Msgstr('S-BLOCK'),
+                ['i']     = Msgstr('INSERT'),
+                ['ic']    = Msgstr('INSERT'),
+                ['ix']    = Msgstr('INSERT'),
+                ['R']     = Msgstr('REPLACE'),
+                ['Rc']    = Msgstr('REPLACE'),
+                ['Rx']    = Msgstr('REPLACE'),
+                ['Rv']    = Msgstr('V-REPLACE'),
+                ['Rvc']   = Msgstr('V-REPLACE'),
+                ['Rvx']   = Msgstr('V-REPLACE'),
+                ['c']     = Msgstr('COMMAND'),
+                ['cv']    = Msgstr('EX'),
+                ['ce']    = Msgstr('EX'),
+                ['r']     = Msgstr('REPLACE'),
+                ['rm']    = Msgstr('MORE'),
+                ['r?']    = Msgstr('CONFIRM'),
+                ['!']     = Msgstr('SHELL'),
+                ['t']     = Msgstr('TERMINAL'),
             }
 
             local rec_msg = ''
@@ -55,7 +55,7 @@ return {
                     if e.event == 'RecordingLeave' then
                         rec_msg = ''
                     else
-                        rec_msg = Msgstr('recording')..' @' .. vim.fn.reg_recording()
+                        rec_msg = Msgstr('recording') .. ' @' .. vim.fn.reg_recording()
                     end
                     require('lualine').refresh()
                 end,
@@ -84,7 +84,17 @@ return {
                 },
                 sections = {
                     lualine_a = { 'mode' },
-                    lualine_b = { 'branch', 'diff',
+                    lualine_b = {
+                        {
+                            'branch',
+                            fmt = function(str)
+                                if vim.api.nvim_strwidth(str) > 40 then
+                                    return ("%s…"):format(str:sub(1, 39))
+                                end
+
+                                return str
+                            end,
+                        }, 'diff',
                         {
                             'diagnostics',
                             sources = { "nvim_diagnostic" },
@@ -95,14 +105,14 @@ return {
                         {
                             'filename',
                             symbols = {
-                                unnamed = '['..Msgstr('No Name')..']',
-                                newfile = '['..Msgstr('New')..']'
+                                unnamed = '[' .. Msgstr('No Name') .. ']',
+                                newfile = '[' .. Msgstr('New') .. ']'
                             }
-                    }
+                        }
                     },
                     lualine_x = {
                         {
-                            function ()
+                            function()
                                 return rec_msg
                             end,
                             color = { fg = "#ffb85c" },
@@ -134,7 +144,7 @@ return {
     { "lukas-reineke/indent-blankline.nvim", main = "ibl" }, -- Indent Line
 
     {
-        'Mofiqul/dracula.nvim',                              -- Theme
+        'Mofiqul/dracula.nvim', -- Theme
         lazy = true,
         priority = 1000,
     },
@@ -145,10 +155,10 @@ return {
             require("dashboard").setup({
                 config = {
                     project = {
-                        label = ' '..Msgstr('Recent Projects:')
+                        label = ' ' .. Msgstr('Recent Projects:')
                     },
                     mru = {
-                        label = ' '..Msgstr('Most Recent Files:')
+                        label = ' ' .. Msgstr('Most Recent Files:')
                     },
                     header = {
                         ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
@@ -161,25 +171,25 @@ return {
                     },
                     shortcut = {
                         {
-                            desc = ' '..Msgstr('Files'),
+                            desc = ' ' .. Msgstr('Files'),
                             group = '@operator',
                             action = 'BrowseFiles',
                             key = 'f',
                         },
                         {
-                            desc = ' '..Msgstr('Keymaps'),
+                            desc = ' ' .. Msgstr('Keymaps'),
                             group = 'DiagnosticHint',
                             action = 'Telescope keymaps',
                             key = 'k',
                         },
                         {
-                            desc = ' '..Msgstr('Settings'),
+                            desc = ' ' .. Msgstr('Settings'),
                             group = '@property',
                             action = 'Telescope file_browser cwd=' .. vim.fn.stdpath("config") .. "/lua/andrem222", -- Change to your dotfiles path
                             key = 'd',
                         },
                         {
-                            desc = '󰝒 '..Msgstr('New File'),
+                            desc = '󰝒 ' .. Msgstr('New File'),
                             group = 'DiagnosticWarn',
                             action = 'ene ',
                             key = 'e',
