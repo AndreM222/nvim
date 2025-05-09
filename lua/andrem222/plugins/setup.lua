@@ -113,7 +113,6 @@ return {
 
             -- LaTeX
             nvim_lsp.texlab.setup({
-                cmd = { "csharp-ls" },
                 on_attach = on_attach,
                 capabilities = capabilities
             })
@@ -195,37 +194,26 @@ return {
                 capabilities = capabilities
             })
 
-            vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-                vim.lsp.diagnostic.on_publish_diagnostics, {
-                    underline = true,
-                    virtual_text = { spacing = 4, prefix = '' },
-                    severity_sort = true
-                }
-            )
-
             -- Diagnostic symbols in the sign column (gutter)
             local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
             for type, icon in pairs(signs) do
                 local hl = "DiagnosticSign" .. type
-                local textType = string.upper(type)
                 vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-                vim.diagnostic.config({
-                    signs = {
-                        text = {
-                            [vim.diagnostic.severity.ERROR] = signs.Error,
-                            [vim.diagnostic.severity.WARN] = signs.Warn,
-                            [vim.diagnostic.severity.HINT] = signs.Hint,
-                            [vim.diagnostic.severity.INFO] = signs.Info
-                        }
-                    }
-                })
             end
 
             -- Setup diagnostic symbol
             vim.diagnostic.config({
-                virtual_text = { prefix = '󰣏' },
-                update_in_insert = true,
-                float = { source = "always" }
+                virtual_text = { prefix = '', spacing = 4 },
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = signs.Error,
+                        [vim.diagnostic.severity.WARN] = signs.Warn,
+                        [vim.diagnostic.severity.HINT] = signs.Hint,
+                        [vim.diagnostic.severity.INFO] = signs.Info
+                    }
+                },
+
+                update_in_insert = true
             })
         end
     },
