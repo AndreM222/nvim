@@ -23,6 +23,7 @@ dracula.setup({
         VertSplit = { fg = dracula.colors().comment },
         WinSeparator = { fg = dracula.colors().comment },
         WinBar = { fg = "NONE", bg = "NONE" },
+        WinBarNC = { fg = "NONE", bg = "NONE" },
 
         -- Missing fg color and extra setup
         IblScope = { fg = dracula.colors().comment, nocombine = true },
