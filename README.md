@@ -212,8 +212,8 @@ When run nvim will pass the language you have set and translate it to the desire
 If no language available or translation than it will setup the default message.
 
 > [!WARNING]
-> Japanese is still now available. Will be coming as soon as I finish learning sufficient
-> to bring a well translated configuration.
+> Japanese is now available. Translations might still be a bit wierd.
+> Will improve them as I keep learning the language.
 
 Format for translations:
 ```json
