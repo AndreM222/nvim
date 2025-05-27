@@ -58,7 +58,7 @@ return {
                             -- `hl.color()` → `hl.get_property()` as it can now get highlight group properties too
                             local bg = hl.get_property("bg", { "MarkviewHeading" .. h }, nil, nil);
 
-                            if bg then
+                            if vim.islist(bg) then
                                 table.insert(_o, {
                                     group_name = "MarkviewHeading" .. h .. "Corner",
                                     -- `hl.hex()` → `hl.rgb_to_hex()` as the previous name wasn't obvious(because there's now HSL & Lab color functions too).
