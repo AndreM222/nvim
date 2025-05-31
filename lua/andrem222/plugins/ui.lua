@@ -173,7 +173,7 @@ return {
                         {
                             desc = ' ' .. Msgstr('Files'),
                             group = '@operator',
-                            action = 'BrowseFiles',
+                            action = 'Telescope file_browser',
                             key = 'f',
                         },
                         {
@@ -185,7 +185,7 @@ return {
                         {
                             desc = ' ' .. Msgstr('Settings'),
                             group = '@property',
-                            action = 'Telescope file_browser cwd=' .. vim.fn.stdpath("config") .. "/lua/andrem222", -- Change to your dotfiles path
+                            action = 'Telescope file_browser path=' .. vim.fn.stdpath("config") .. "/lua/andrem222", -- Change to your dotfiles path
                             key = 'd',
                         },
                         {
