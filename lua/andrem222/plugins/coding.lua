@@ -3,8 +3,8 @@ return {
     { 'numToStr/Comment.nvim' }, -- Comment
 
     {
-		"ThePrimeagen/refactoring.nvim", -- Refactoring
-		config = function ()
+        "ThePrimeagen/refactoring.nvim", -- Refactoring
+        config = function()
             require("refactoring.refactor").refactor_names = {
                 [Msgstr("Inline Variable")] = "inline_var",
                 [Msgstr("Extract Variable")] = "extract_var",
@@ -17,22 +17,30 @@ return {
 
             vim.api.nvim_create_user_command(
                 "RefactorList",
-				function(opts)
+                function(opts)
                     require("plenary.async").void(function()
                         local selected_refactor = require("refactoring.ui").select(
                             require("refactoring").get_refactors(),
                             Msgstr("Refactoring: select a refactor to apply:")
                         )
 
-                        if selected_refactor then
-                            require("refactoring").refactor(selected_refactor, opts)
+                        if not selected_refactor then
+                            return
                         end
+
+                        local keys = require("refactoring").refactor(selected_refactor, opts)
+
+                        if keys == "g@" then
+                            keys = "gvg@"
+                        end
+
+                        vim.cmd.normal(keys)
                     end)()
-				end,
+                end,
                 {}
             )
-		end,
-	},
+        end,
+    },
 
     {
         "monaqa/dial.nvim", -- Incerement and Decrement Improvement
