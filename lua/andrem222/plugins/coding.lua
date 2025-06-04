@@ -19,7 +19,7 @@ return {
                 "RefactorList",
 				function(opts)
                     require("plenary.async").void(function()
-                        local selected_refactor = require("refactoring.get_select_input")(
+                        local selected_refactor = require("refactoring.ui").select(
                             require("refactoring").get_refactors(),
                             Msgstr("Refactoring: select a refactor to apply:")
                         )
