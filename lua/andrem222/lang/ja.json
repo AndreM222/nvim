@@ -433,5 +433,13 @@
 
     "NOTE: jsregexp is optional, so not a big deal if it fails to build": {
         "msgstr": "注: jsregexp はオプションなので、ビルドに失敗しても大した問題ではありません"
+    },
+
+    "The path has been copied ": {
+        "msgstr": "パスがコピーされしました"
+    },
+
+    "Invalid": {
+        "msgstr": "無効"
     }
 }

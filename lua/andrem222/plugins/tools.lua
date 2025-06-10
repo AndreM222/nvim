@@ -21,7 +21,7 @@ return {
             local function getPath(entry)
                 local cb_opts = vim.opt.clipboard:get()
                 vim.fn.setreg(vim.v.register, entry[1])
-                vim.notify("The path has been copied " .. entry[1])
+                vim.notify(Msgstr("The path has been copied ") .. entry[1])
             end
 
             telescope.setup {
@@ -30,12 +30,11 @@ return {
                         n = {
                             ["q"] = actions.close,
 
-                            ["O"] = function()
+                            ["o"] = function()
                                 local fn = vim.fn
                                 local cmd
                                 if vim.fn.has('mac') == 1 then
                                     cmd = '!open'
-                                    print("macy")
                                 elseif vim.fn.has('win32') == 1 then
                                     cmd = '!explorer'
                                 elseif vim.fn.executable('wslview') == 1 then
@@ -43,7 +42,7 @@ return {
                                 elseif vim.fn.executable('xdg-open') == 1 then
                                     cmd = '!xdg-open'
                                 else
-                                    print("Invalid")
+                                    vim.notify(Msgstr("Invalid"), "error")
                                     return -1;
                                 end
 
