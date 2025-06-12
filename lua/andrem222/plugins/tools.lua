@@ -32,6 +32,23 @@ return {
                 vim.notify(Msgstr("The path has been copied ") .. dir_path)
             end
 
+            local function getDeviceOpenCMD()
+                local cmd
+                if vim.fn.has('mac') == 1 then
+                    cmd = '!open'
+                elseif vim.fn.has('win32') == 1 then
+                    cmd = '!explorer'
+                elseif vim.fn.executable('wslview') == 1 then
+                    cmd = '!wslview'
+                elseif vim.fn.executable('xdg-open') == 1 then
+                    cmd = '!xdg-open'
+                else
+                    vim.notify(Msgstr("Invalid"), "error")
+                    return -1;
+                end
+
+                return cmd
+            end
 
             telescope.setup {
                 defaults = {
@@ -41,19 +58,9 @@ return {
 
                             ["O"] = function()
                                 local fn = vim.fn
-                                local cmd
-                                if vim.fn.has('mac') == 1 then
-                                    cmd = '!open'
-                                elseif vim.fn.has('win32') == 1 then
-                                    cmd = '!explorer'
-                                elseif vim.fn.executable('wslview') == 1 then
-                                    cmd = '!wslview'
-                                elseif vim.fn.executable('xdg-open') == 1 then
-                                    cmd = '!xdg-open'
-                                else
-                                    vim.notify(Msgstr("Invalid"), "error")
-                                    return -1;
-                                end
+                                local cmd = getDeviceOpenCMD()
+
+                                if(cmd == -1) then return -1 end
 
                                 local entry = require("telescope.actions.state").get_selected_entry().path
 
@@ -65,19 +72,9 @@ return {
 
                             ["o"] = function()
                                 local fn = vim.fn
-                                local cmd
-                                if vim.fn.has('mac') == 1 then
-                                    cmd = '!open'
-                                elseif vim.fn.has('win32') == 1 then
-                                    cmd = '!explorer'
-                                elseif vim.fn.executable('wslview') == 1 then
-                                    cmd = '!wslview'
-                                elseif vim.fn.executable('xdg-open') == 1 then
-                                    cmd = '!xdg-open'
-                                else
-                                    vim.notify(Msgstr("Invalid"), "error")
-                                    return -1;
-                                end
+                                local cmd = getDeviceOpenCMD()
+
+                                if(cmd == -1) then return -1 end
 
                                 local entry = require("telescope.actions.state").get_selected_entry().path
 
