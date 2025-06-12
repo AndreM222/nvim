@@ -297,6 +297,5 @@ folder, and run the installer manually.
 </details>
 
 ## Roadmap 🗺️
-- [ ] Open in default file manager
 - [ ] Get new translations on compile with gettext or equivalent
 - [ ] Query for name on new file made in main menu
