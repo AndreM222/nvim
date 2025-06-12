@@ -18,17 +18,50 @@ return {
             local fb_actions = require "telescope".extensions.file_browser.actions
             local themes = require("telescope.themes")
 
-            local function getPath(entry)
+            local function copyFullPath(entry)
                 local cb_opts = vim.opt.clipboard:get()
                 vim.fn.setreg(vim.v.register, entry[1])
                 vim.notify(Msgstr("The path has been copied ") .. entry[1])
             end
+
+            local function copyPath(entry)
+                local cb_opts = vim.opt.clipboard:get()
+                local dir_path = vim.fs.dirname(entry[1]) .. "/"
+                vim.fn.setreg(vim.v.register, dir_path)
+
+                vim.notify(Msgstr("The path has been copied ") .. dir_path)
+            end
+
 
             telescope.setup {
                 defaults = {
                     mappings = {
                         n = {
                             ["q"] = actions.close,
+
+                            ["O"] = function()
+                                local fn = vim.fn
+                                local cmd
+                                if vim.fn.has('mac') == 1 then
+                                    cmd = '!open'
+                                elseif vim.fn.has('win32') == 1 then
+                                    cmd = '!explorer'
+                                elseif vim.fn.executable('wslview') == 1 then
+                                    cmd = '!wslview'
+                                elseif vim.fn.executable('xdg-open') == 1 then
+                                    cmd = '!xdg-open'
+                                else
+                                    vim.notify(Msgstr("Invalid"), "error")
+                                    return -1;
+                                end
+
+                                local entry = require("telescope.actions.state").get_selected_entry().path
+
+                                local dir_path = vim.fs.dirname(entry) .. "/"
+
+
+                                fn.execute(cmd .. ' ' .. dir_path)
+                            end,
 
                             ["o"] = function()
                                 local fn = vim.fn
@@ -53,13 +86,23 @@ return {
 
                             ["<C-y>"] = function()
                                 local entry = require("telescope.actions.state").get_selected_entry()
-                                return getPath(entry)
+                                return copyFullPath(entry)
+                            end,
+
+                            ["<C-Y>"] = function()
+                                local entry = require("telescope.actions.state").get_selected_entry()
+                                return copyPath(entry)
                             end
                         },
                         i = {
                             ["<C-y>"] = function()
                                 local entry = require("telescope.actions.state").get_selected_entry()
-                                return getPath(entry)
+                                return copyFullPath(entry)
+                            end,
+
+                            ["<C-Y>"] = function()
+                                local entry = require("telescope.actions.state").get_selected_entry()
+                                return copyPath(entry)
                             end
                         },
                     },
