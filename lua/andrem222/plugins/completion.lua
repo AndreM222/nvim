@@ -23,8 +23,11 @@ return {
 
                 documentation = {
                     auto_show = true,
-                    winblend = vim.o.pumblend,
-                    window = { winhighlight = 'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None' }
+                    window = {
+                        winblend = vim.o.pumblend,
+                        winhighlight =
+                        'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None'
+                    }
                 },
 
                 ghost_text = { enabled = true }

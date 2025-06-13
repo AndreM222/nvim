@@ -48,27 +48,24 @@ return {
                 },
 
                 highlight_groups = {
-                    -- The property name is ZZ because we want to load this last.
-                    ["ZZ"] = function ()
-                        local hl = require("markview.highlights");
-
-                        local _o = {};
-
-                        for h = 1, 6, 1 do
-                            -- `hl.color()` → `hl.get_property()` as it can now get highlight group properties too
-                            local bg = hl.get_property("bg", { "MarkviewHeading" .. h }, nil, nil);
-
-                            if vim.islist(bg) then
-                                table.insert(_o, {
-                                    group_name = "MarkviewHeading" .. h .. "Corner",
-                                    -- `hl.hex()` → `hl.rgb_to_hex()` as the previous name wasn't obvious(because there's now HSL & Lab color functions too).
-                                    value = { fg = hl.rgb_to_hex(bg) }
-                                });
-                            end
-                        end
-
-                        return _o;
-                    end
+                    -- ["ZZ"] = function ()
+                    --     local hl = require("markview.highlights");
+                    --
+                    --     local _o = {};
+                    --
+                    --     for h = 1, 6, 1 do
+                    --         local bg = hl.get_property("bg", { "MarkviewHeading" .. h }, nil, nil);
+                    --
+                    --         if vim.islist(bg) then
+                    --             table.insert(_o, {
+                    --                 group_name = "MarkviewHeading" .. h .. "Corner",
+                    --                 value = { fg = hl.rgb_to_hex(bg) }
+                    --             });
+                    --         end
+                    --     end
+                    --
+                    --     return _o;
+                    -- end
                 },
 
                 markdown = {
