@@ -81,27 +81,16 @@ return {
                                 fn.execute(cmd .. ' ' .. entry)
                             end,
 
-                            ["<C-y>"] = function()
+                            ["y"] = function()
                                 local entry = require("telescope.actions.state").get_selected_entry()
                                 return copyFullPath(entry)
                             end,
 
-                            ["<C-Y>"] = function()
+                            ["Y"] = function()
                                 local entry = require("telescope.actions.state").get_selected_entry()
                                 return copyPath(entry)
                             end
-                        },
-                        i = {
-                            ["<C-y>"] = function()
-                                local entry = require("telescope.actions.state").get_selected_entry()
-                                return copyFullPath(entry)
-                            end,
-
-                            ["<C-Y>"] = function()
-                                local entry = require("telescope.actions.state").get_selected_entry()
-                                return copyPath(entry)
-                            end
-                        },
+                        }
                     },
 
                     -- Come back on neovim 0.12 for image API
