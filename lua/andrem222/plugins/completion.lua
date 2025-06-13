@@ -31,7 +31,7 @@ return {
             },
 
             cmdline = {
-                keymap = { preset = 'inherit' },
+                keymap = { preset = 'super-tab' },
                 completion = {
                     menu = { auto_show = true },
                     ghost_text = { enabled = true }
