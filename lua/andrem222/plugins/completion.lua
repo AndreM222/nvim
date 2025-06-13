@@ -1,119 +1,54 @@
 return {
     {
-        'hrsh7th/nvim-cmp', -- Autocompletion
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            {
-                'L3MON4D3/LuaSnip',
-                build = (vim.uv.os_uname().sysname:find("Windows") ~= nil)
-                    and "echo '"..Msgstr("NOTE: jsregexp is optional, so not a big deal if it fails to build").."'; make install_jsregexp"
-                    or nil,
-                dependencies = {
-                    {
-                        "rafamadriz/friendly-snippets", -- More Snippets
-                        config = function()
-                            require("luasnip.loaders.from_vscode").lazy_load()
-                        end,
-                    },
-                }
-            },
-            'saadparwaiz1/cmp_luasnip'
-        },
-        config = function()
-            local cmp = require("cmp")
+        'saghen/blink.cmp',
+        dependencies = { 'rafamadriz/friendly-snippets' },
 
-            cmp.setup({
-                window = {
-                    documentation = {
-                        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu"
+        version = '1.*',
+
+        opts = {
+            keymap = {
+                preset = 'super-tab',
+                ['<CR>'] = { 'accept', 'fallback' },
+            },
+
+            completion = {
+                list = { selection = { auto_insert = false } },
+
+                menu = {
+                    winblend = vim.o.pumblend,
+                    draw = {
+                        columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { "kind" } },
                     }
                 },
-                snippet = {
-                    expand = function(args)
-                        require('luasnip').lsp_expand(args.body)
-                    end,
+
+                documentation = {
+                    auto_show = true,
+                    winblend = vim.o.pumblend,
+                    window = { winhighlight = 'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None' }
                 },
-                mapping = cmp.mapping.preset.insert({
-                    ['<c-b>'] = cmp.mapping.scroll_docs(-4),
-                    ['<c->'] = cmp.mapping.scroll_docs(4),
-                    ['<c-space>'] = cmp.mapping.complete(),
-                    ['<tab>'] = cmp.mapping.confirm({ select = true }),
-                    ['<c-e>'] = cmp.mapping.abort(),
-                    ['<cr>'] = cmp.mapping.confirm({ select = true }),
-                }),
-                sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                    { name = 'buffer' },
-                    { name = 'luasnip' },
-                    CopilotCMP()
-                }),
-                formatting = {
-                    fields = { 'kind', 'abbr', 'menu' },
-                    format = function(entry, vim_item)
-                        local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry,
-                            vim_item)
-                        local strings = vim.split(kind.kind, "%s", { trimempty = true })
-                        kind.kind = (strings[1] or "")
-                        kind.menu = "    " .. (strings[2] or "") .. ""
-                        kind.ellipsis_char = '...'
 
-                        return kind
-                    end,
+                ghost_text = { enabled = true }
+            },
+
+            cmdline = {
+                keymap = { preset = 'inherit' },
+                completion = {
+                    menu = { auto_show = true },
+                    ghost_text = { enabled = true }
                 }
-            })
+            },
 
-            -- set configuration for specific filetype.
-            cmp.setup.filetype('gitcommit', {
-                sources = cmp.config.sources({
-                    { name = 'cmp_git' },
-                }, {
-                    { name = 'buffer' },
-                })
-            })
+            signature = {
+                window = {
+                    winblend = vim.o.pumblend,
+                },
+            },
 
-            vim.cmd [[
-    set completeopt=menuone,noinsert,noselect,fuzzy
-    highlight! default link cmpitemkind cmpitemmenudefault
-]]
-        end
-    },
-    {
-        'onsails/lspkind-nvim', -- Icons
-        config = function()
-            require("lspkind").init({
-                mode = 'symbol_text',
-                preset = 'codicons',
-                symbol_map = {
-                    Text = "",
-                    Method = "",
-                    Function = "",
-                    Constructor = "",
-                    Field = "",
-                    Variable = "",
-                    Class = "",
-                    Interface = "",
-                    Module = "",
-                    Property = "",
-                    Unit = "",
-                    Value = "",
-                    Enum = "",
-                    Keyword = "",
-                    Snippet = "",
-                    Color = "",
-                    File = "",
-                    Reference = "",
-                    Folder = "",
-                    EnumMember = "",
-                    Constant = "",
-                    Struct = "",
-                    Event = "",
-                    Operator = "",
-                    TypeParameter = "",
-                    Copilot = ""
-                }
-            })
-        end
+            sources = CopilotCMP(),
+
+            appearance = { nerd_font_variant = 'mono' },
+        },
+        opts_extend = { "sources.default" }
     },
     {
         'windwp/nvim-autopairs', -- Autopairs

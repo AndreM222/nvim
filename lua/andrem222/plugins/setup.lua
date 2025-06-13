@@ -6,37 +6,6 @@ return {
 
             require('lspconfig.ui.windows').default_options.border = 'single'
 
-            -- Setup Lsp protocol
-            local protocol = require('vim.lsp.protocol')
-
-            protocol.CompletionItemKind = {
-                "", -- Text
-                "", -- Method
-                "", -- Function
-                "", -- Constructor
-                "", -- Field
-                "", -- Variable
-                "", -- Class
-                "", -- Interface
-                "", -- Module
-                "", -- Property
-                "", -- Unit
-                "", -- Value
-                "", -- Enum
-                "", -- Keyword
-                "", -- Snippet
-                "", -- Color
-                "", -- File
-                "", -- Reference
-                "", -- Folder
-                "", -- EnumMember
-                "", -- Constant
-                "", -- Struct
-                "", -- Event
-                "", -- Operator
-                "", -- TypeParameter
-            }
-
             local on_attach = function(client, bufnr)
                 local function buf_set_keymap(...)
                     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -59,7 +28,7 @@ return {
                 buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
             end
 
-            local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+            local capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
             capabilities.offsetEncoding = { "utf-16" }
             capabilities.textDocument.foldingRange = {
                 dynamicRegistration = false,

@@ -44,7 +44,7 @@
 
   - [Copilot-Lualine](https://github.com/AndreM222/copilot-lualine) - Copilot Status Setup
 
-  - [Copilot-CMP](https://github.com/hrsh7th/cmp-copilot) - Copilot Setup
+  - [Blink-CMP-Copilot](https://github.com/giuxtaposition/blink-cmp-copilot) - Copilot Setup
   </details>
 
 - [nvim-Web-Devicons](https://github.com/kyazdani42/nvim-web-devicons) - Icons
@@ -62,16 +62,12 @@
   </details>
 
 - [Markdown Preview](https://github.com/iamcco/markdown-preview.nvim) - Live Markdown Preview
-- [Nvim-CMP](https://github.com/hrsh7th/nvim-cmp) - Auto Complete Setup
+- [Blink.CMP](https://github.com/Saghen/blink.cmp) - Auto Complete Setup
   <details> <summary>Dependencies</summary>
 
   - [CMP_LuaSnip]('https://github.com/saadparwaiz1/cmp_luasnip') - Snippet Setup
 
   - [Friendly-Snippets](https://github.com/rafamadriz/friendly-snippets) - More Snippets
-
-  - [CMP-Nvim-LSP](https://github.com/hrsh7th/cmp-nvim-lsp) - LSP Setup
-
-  - [CMP-Buffer](https://github.com/hrsh7th/cmp-buffer) - Buffer Setup
   </details>
 
 - [Lspkind-Nvim](https://github.com/onsails/lspkind.nvim) - Icons for Nvim LSP

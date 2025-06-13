@@ -23,12 +23,8 @@ if CopilotEnable then
         },
 
         {
-            "zbirenbaum/copilot-cmp",
-            opts = {},
-            config = function(_, opts)
-                require("copilot_cmp").setup(opts)
-            end,
-        },
+            "giuxtaposition/blink-cmp-copilot",
+        }
     }
 end
 

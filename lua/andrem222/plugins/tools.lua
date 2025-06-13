@@ -60,7 +60,7 @@ return {
                                 local fn = vim.fn
                                 local cmd = getDeviceOpenCMD()
 
-                                if(cmd == -1) then return -1 end
+                                if (cmd == -1) then return -1 end
 
                                 local entry = require("telescope.actions.state").get_selected_entry().path
 
@@ -74,7 +74,7 @@ return {
                                 local fn = vim.fn
                                 local cmd = getDeviceOpenCMD()
 
-                                if(cmd == -1) then return -1 end
+                                if (cmd == -1) then return -1 end
 
                                 local entry = require("telescope.actions.state").get_selected_entry().path
 
@@ -98,7 +98,7 @@ return {
                         mime_hook = function(filepath, bufnr, opts)
                             local is_image = function(filepath)
                                 local image_extensions = { "png", "jpg", "jpeg", "webp", "gif" }
-                                local split_path = vim.split(filepath:lower(), '.', {plain=true})
+                                local split_path = vim.split(filepath:lower(), '.', { plain = true })
                                 local extension = split_path[#split_path]
                                 return vim.tbl_contains(image_extensions, extension)
                             end
@@ -106,9 +106,9 @@ return {
                                 local height = vim.api.nvim_win_get_height(opts.winid)
                                 local width = vim.api.nvim_win_get_width(opts.winid)
                                 local term = vim.api.nvim_open_term(bufnr, {})
-                                local function send_output(_, data, _ )
+                                local function send_output(_, data, _)
                                     for _, d in ipairs(data) do
-                                        vim.api.nvim_chan_send(term, d..'\r\n')
+                                        vim.api.nvim_chan_send(term, d .. '\r\n')
                                     end
                                 end
 
@@ -120,11 +120,12 @@ return {
                                         "--format=symbols",
                                         "--view-size=" .. width .. "x" .. height,
                                         "--scale=max",
-                                        filepath  -- Terminal image viewer command
+                                        filepath -- Terminal image viewer command
                                     },
-                                    {on_stdout=send_output, stdout_buffered=true, pty=true})
+                                    { on_stdout = send_output, stdout_buffered = true, pty = true })
                             else
-                                require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid, "Binary cannot be previewed")
+                                require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid,
+                                    "Binary cannot be previewed")
                             end
                         end
                     }
@@ -222,7 +223,7 @@ return {
     {
         'echasnovski/mini.surround',
         version = '*',
-        config = function ()
+        config = function()
             require('mini.surround').setup({
                 mappings = {
                     highlight = '', -- Highlight surrounding
@@ -231,9 +232,9 @@ return {
         end
     },
     {
-		"smjonas/inc-rename.nvim",
-		config = true,
-	},
+        "smjonas/inc-rename.nvim",
+        config = true,
+    },
     {
         'glepnir/lspsaga.nvim', -- Tools
         config = function()

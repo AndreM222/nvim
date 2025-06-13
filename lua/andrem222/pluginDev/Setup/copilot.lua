@@ -15,7 +15,6 @@ function CopilotIcon()
             },
             -- show_colors = true
         }
-
     end
 
     return ""
@@ -24,11 +23,17 @@ end
 function CopilotCMP()
     if CopilotEnable then
         return {
-            name = "copilot",
-            group_index = 1,
-            priority = 100
+            default = { "lsp", "path", "snippets", "buffer", "copilot" },
+            providers = {
+                copilot = {
+                    name = "copilot",
+                    module = "blink-cmp-copilot",
+                    score_offset = 100,
+                    async = true,
+                }
+            }
         }
     end
 
-    return {}
+    return { default = { "lsp", "path", "snippets", "buffer" } }
 end

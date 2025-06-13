@@ -295,7 +295,6 @@ return {
             -- Notify Setup
             require("notify").setup({ background_colour = "#000000" })
 
-            local Config = require("noice.config")
             -- Noice Setup
             require("noice").setup({
                 cmdline = {
