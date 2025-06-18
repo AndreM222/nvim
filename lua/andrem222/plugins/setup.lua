@@ -321,7 +321,9 @@ return {
                     }),
 
                     require("none-ls.formatting.autopep8"),
-                    require("none-ls.formatting.latexindent"),
+                    require("none-ls.formatting.latexindent").with({
+                        indent = 4
+                    }),
 
                     -- -- Diagnostics
                     require("none-ls.code_actions.eslint_d").with({

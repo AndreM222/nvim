@@ -52,6 +52,7 @@ return {
 
             telescope.setup {
                 defaults = {
+                    initial_mode = "normal mode",
                     mappings = {
                         n = {
                             ["q"] = actions.close,
@@ -89,6 +90,10 @@ return {
                             ["Y"] = function()
                                 local entry = require("telescope.actions.state").get_selected_entry()
                                 return copyPath(entry)
+                            end,
+
+                            ["/"] = function()
+                                vim.cmd('startinsert')
                             end
                         }
                     },
@@ -187,7 +192,6 @@ return {
                         hidden = true,
                         grouped = true,
                         previewer = false,
-                        initial_mode = "normal",
                         layout_config = { height = 40 },
                         hijack_netrw = true,
                         prompt_title = Msgstr("File Browser"),
@@ -205,9 +209,6 @@ return {
                                 ["R"] = fb_actions.rename,
                                 ["v"] = actions.select_vertical,
                                 ["x"] = actions.select_horizontal,
-                                ["/"] = function()
-                                    vim.cmd('startinsert')
-                                end
                             },
                         }
                     }
