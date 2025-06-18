@@ -15,7 +15,7 @@ return {
                 return vim.fn.expand('%:p:h')
             end
 
-            local fb_actions = require "telescope".extensions.file_browser.actions
+            local fb_actions = require("telescope").extensions.file_browser.actions
             local themes = require("telescope.themes")
 
             local function copyFullPath(entry)
@@ -52,7 +52,7 @@ return {
 
             telescope.setup {
                 defaults = {
-                    initial_mode = "normal mode",
+                    initial_mode = "normal",
                     mappings = {
                         n = {
                             ["q"] = actions.close,
@@ -214,6 +214,21 @@ return {
                     }
                 }
             }
+
+            vim.api.nvim_create_user_command(
+                "CreateMenuShortcut",
+                function()
+                    require("telescope").extensions.file_browser.file_browser({
+                        attach_mappings = function()
+                            vim.defer_fn(function()
+                                vim.api.nvim_feedkeys("N", "N", false)
+                            end, 10)
+                            return true
+                        end,
+                    })
+                end,
+                {}
+            )
 
             telescope.load_extension("file_browser")
             telescope.load_extension("ui-select")

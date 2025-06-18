@@ -191,7 +191,7 @@ return {
                         {
                             desc = '󰝒 ' .. Msgstr('New File'),
                             group = 'DiagnosticWarn',
-                            action = 'ene ',
+                            action = 'CreateMenuShortcut',
                             key = 'e',
                         }
                     },
