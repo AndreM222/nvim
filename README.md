@@ -294,4 +294,3 @@ folder, and run the installer manually.
 
 ## Roadmap 🗺️
 - [ ] Get new translations on compile with gettext or equivalent
-- [ ] Query for name on new file made in main menu
