@@ -96,6 +96,5 @@ return {
             end
         end,
 
-    },
-    { 'windwp/nvim-ts-autotag' } -- Autotag
+    }
 }

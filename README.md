@@ -84,7 +84,6 @@
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Highlight Functions
 - [Comment](https://github.com/numToStr/Comment.nvim) - Commenter For Languages
 - [Auto-Pair](https://github.com/jiangmiao/auto-pairs) - Auto Pair Characters
-- [Close-Tag](https://github.com/windwp/nvim-ts-autotag) - Close Tags
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippets
 - [NVim-Colorizer](https://github.com/NvChad/nvim-colorizer.lua) - Color Preview
 - [None-LS](https://github.com/nvimtools/none-ls.nvim) - Formatting Languages And Linter
