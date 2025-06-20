@@ -30,9 +30,13 @@ end
 -- Load translations
 translations = parse_po(po_path)
 
---- This function returns the translation if available of text in the parameter
+--- This function returns the translation if available and not empty
 --- @param description string Description to translate
---- @return any
+--- @return string
 function Msgstr(description)
-    return translations[description] or description
+    local translated = translations[description]
+    if not translated or translated == "" then
+        return description
+    end
+    return translated
 end
