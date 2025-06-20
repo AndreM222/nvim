@@ -35,14 +35,6 @@
         "msgstr": "通常モードのキーマッピングを一覧表示します"
     },
 
-    "Open Mason Menu": {
-        "msgstr": "Masonメニューを開く"
-    },
-
-    "Open Lazy Menu": {
-        "msgstr": "Lazyメニューを開く"
-    },
-
     "Move Selection Down": {
         "msgstr": "選択範囲を下へ移動"
     },

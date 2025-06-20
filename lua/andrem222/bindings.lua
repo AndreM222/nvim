@@ -11,10 +11,6 @@ keymap.set('n', '\\\\', '<Cmd>Telescope buffers<CR>', { silent = true, desc = Ms
 keymap.set('n', '<F3>', '<Cmd>Telescope help_tags<CR>', { silent = true, desc = Msgstr("Lists available help tags and opens a new window with the relevant help info") })
 keymap.set('n', '<F4>', '<Cmd>Telescope keymaps<CR>', { silent = true, desc = Msgstr("Lists normal mode key mappings") })
 
--- Installations
-keymap.set('n', '<S-Home>', '<Cmd>Mason<CR>', { silent = true, desc = Msgstr("Open Mason Menu") })
-keymap.set('n', '<Home>', '<Cmd>Lazy<CR>', { silent = true, desc = Msgstr("Open Lazy Menu") })
-
 -- Moving Selections
 keymap.set({ 'n', 'i' }, '<A-Down>', '<Esc>:m .+1<CR>==', { silent = true, desc = Msgstr("Move Selection Down") })
 keymap.set({ 'n', 'i' }, '<A-Up>', '<Esc>:m .-2<CR>==', { silent = true, desc = Msgstr("Move Selection Up") })
