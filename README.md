@@ -290,6 +290,3 @@ folder, and run the installer manually.
 ```
 
 </details>
-
-## Roadmap 🗺️
-- [ ] Get new translations on compile with gettext or equivalent

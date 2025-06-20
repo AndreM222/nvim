@@ -1,0 +1,464 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-20 10:49-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lua/andrem222/bindings.lua:4
+msgid "Browse Through Files"
+msgstr "ファイルを閲覧する"
+
+#: lua/andrem222/bindings.lua:5
+msgid "Lists the results including multi-selections of the previous picker"
+msgstr "前のピッカーの複数選択を含む結果を一覧表示します"
+
+#: lua/andrem222/bindings.lua:6
+msgid "Lists files in your current working directory"
+msgstr "現在の作業ディレクトリ内のファイルを一覧表示します"
+
+#: lua/andrem222/bindings.lua:7
+msgid ""
+"Search for a string in your current working directory and get results live "
+"as you type"
+msgstr "現在の作業ディレクトリ内の文字列を検索し、入力と同時に結果を取得します。"
+
+#: lua/andrem222/bindings.lua:8
+msgid "Lists Diagnostics for all open buffers or a specific buffer"
+msgstr "開いているすべてのバッファまたは特定のバッファの診断を一覧表示します"
+
+#: lua/andrem222/bindings.lua:9
+msgid "Lists current changes per file with diff preview and add action"
+msgstr "ファイルごとの現在の変更を差分プレビューと追加アクションで一覧表示します"
+
+#: lua/andrem222/bindings.lua:10
+msgid "Lists open buffers in current instance"
+msgstr "現在のインスタンスで開いているバッファを一覧表示します"
+
+#: lua/andrem222/bindings.lua:11
+msgid ""
+"Lists available help tags and opens a new window with the relevant help info"
+msgstr "利用可能なヘルプタグを一覧表示し、関連するヘルプ情報を含む新しいウィンドウを開きます"
+
+#: lua/andrem222/bindings.lua:12
+msgid "Lists normal mode key mappings"
+msgstr "通常モードのキーマッピングを一覧表示します"
+
+#: lua/andrem222/bindings.lua:15 lua/andrem222/bindings.lua:17
+msgid "Move Selection Down"
+msgstr "選択範囲を下へ移動"
+
+#: lua/andrem222/bindings.lua:16 lua/andrem222/bindings.lua:18
+msgid "Move Selection Up"
+msgstr "選択範囲を上に移動"
+
+#: lua/andrem222/bindings.lua:20 lua/andrem222/bindings.lua:22
+msgid "Move Selection Left"
+msgstr "選択範囲を左に移動"
+
+#: lua/andrem222/bindings.lua:21 lua/andrem222/bindings.lua:23
+msgid "Move Selection Right"
+msgstr "選択範囲を右に移動"
+
+#: lua/andrem222/bindings.lua:26
+msgid "Close Current Buffer"
+msgstr "現在のバッファを閉じる"
+
+#: lua/andrem222/bindings.lua:27
+msgid "Switch To Next Buffer"
+msgstr "次のバッファに切り替える"
+
+#: lua/andrem222/bindings.lua:28
+msgid "Switch To Previous Buffer"
+msgstr "前のバッファに切り替える"
+
+#: lua/andrem222/bindings.lua:31 lua/andrem222/bindings.lua:32
+msgid "Toggle Line Comment"
+msgstr "行コメントの切り替え"
+
+#: lua/andrem222/bindings.lua:33
+msgid "Toggle Block Comment"
+msgstr "コメントブロックの切り替え"
+
+#: lua/andrem222/bindings.lua:36
+msgid "Format Lines Of Code"
+msgstr "コード行のフォーマット"
+
+#: lua/andrem222/bindings.lua:39
+msgid "Show Hover Documentation"
+msgstr "コード行のフォーマット"
+
+#: lua/andrem222/bindings.lua:40
+msgid "Peek Definition"
+msgstr "ピークの定義"
+
+#: lua/andrem222/bindings.lua:41
+msgid "Go to Definition"
+msgstr "定義へ移動"
+
+#: lua/andrem222/bindings.lua:42
+msgid "Find References and Implementations"
+msgstr "参照と実装を見つける"
+
+#: lua/andrem222/bindings.lua:43
+msgid "Code Action"
+msgstr "アクション"
+
+#: lua/andrem222/bindings.lua:44
+msgid "Jump to Next Diagnostic"
+msgstr "次の診断にジャンプ"
+
+#: lua/andrem222/bindings.lua:45
+msgid "Jump to Previous Diagnostic"
+msgstr "前の診断へジャンプ"
+
+#: lua/andrem222/bindings.lua:46
+msgid "Show Line Diagnostics"
+msgstr "ライン診断を表示"
+
+#: lua/andrem222/bindings.lua:52
+msgid "Renaming with immediate visual feedback"
+msgstr "名前の変更"
+
+#: lua/andrem222/bindings.lua:55
+msgid "Horizontal Split Window"
+msgstr "水平分割ウィンドウ"
+
+#: lua/andrem222/bindings.lua:56
+msgid "Vertical Split Window"
+msgstr "垂直分割ウィンドウ"
+
+#: lua/andrem222/bindings.lua:59
+msgid "Move to Left Window"
+msgstr "左のウィンドウに移動"
+
+#: lua/andrem222/bindings.lua:60
+msgid "Move to Upper Window"
+msgstr "上のウィンドウに移動"
+
+#: lua/andrem222/bindings.lua:61
+msgid "Move to Lower Window"
+msgstr "下のウィンドウに移動"
+
+#: lua/andrem222/bindings.lua:62
+msgid "Move to Right Window"
+msgstr "右のウィンドウに移動"
+
+#: lua/andrem222/bindings.lua:65
+msgid "Resize Pane Left"
+msgstr "ペインのサイズ変更左"
+
+#: lua/andrem222/bindings.lua:66
+msgid "Resize Pane Up"
+msgstr "ペインのサイズを上に変更"
+
+#: lua/andrem222/bindings.lua:67
+msgid "Resize Pane Down"
+msgstr "ペインのサイズを小さくする"
+
+#: lua/andrem222/bindings.lua:68
+msgid "Resize Pane Right"
+msgstr "ペインのサイズ変更右"
+
+#: lua/andrem222/bindings.lua:71
+msgid "Paste Without Copying"
+msgstr "コピーせずに貼り付ける"
+
+#: lua/andrem222/bindings.lua:73
+msgid "Delete Without Copying"
+msgstr "コピーせずに削除"
+
+#: lua/andrem222/bindings.lua:76
+msgid "Open Current Fold"
+msgstr "現在の折りたたみを開く"
+
+#: lua/andrem222/bindings.lua:77
+msgid "Close Current Fold"
+msgstr "現在の折りたたみを閉じる"
+
+#: lua/andrem222/bindings.lua:78
+msgid "Open All Folds"
+msgstr "すべての折り目を開く"
+
+#: lua/andrem222/bindings.lua:79
+msgid "Close All Folds"
+msgstr "すべての折り目を閉じる"
+
+#: lua/andrem222/bindings.lua:82
+msgid "Escape and clear hlsearch"
+msgstr "脱出してhlsearchをクリア"
+
+#: lua/andrem222/bindings.lua:85
+msgid "Exit Terminal Mode"
+msgstr "ターミナルモードを終了する"
+
+#: lua/andrem222/bindings.lua:88
+msgid "Refactor Menu"
+msgstr "リファクタリングメニュー"
+
+#: lua/andrem222/plugins/tools.lua:24 lua/andrem222/plugins/tools.lua:32
+msgid "The path has been copied "
+msgstr "パスがコピーされしました"
+
+#: lua/andrem222/plugins/tools.lua:46
+msgid "Invalid"
+msgstr "無効"
+
+#: lua/andrem222/plugins/tools.lua:142
+msgid "Git Status"
+msgstr "Gitステータス"
+
+#: lua/andrem222/plugins/tools.lua:143 lua/andrem222/plugins/tools.lua:149
+#: lua/andrem222/plugins/tools.lua:155 lua/andrem222/plugins/tools.lua:161
+#: lua/andrem222/plugins/tools.lua:167 lua/andrem222/plugins/tools.lua:172
+#: lua/andrem222/plugins/tools.lua:178
+msgid "Results"
+msgstr "結果"
+
+#: lua/andrem222/plugins/tools.lua:144 lua/andrem222/plugins/tools.lua:150
+#: lua/andrem222/plugins/tools.lua:156 lua/andrem222/plugins/tools.lua:173
+#: lua/andrem222/plugins/tools.lua:179
+msgid "Grep Preview"
+msgstr "グレッププレビュー"
+
+#: lua/andrem222/plugins/tools.lua:148
+msgid "Buffers"
+msgstr "ブッファ"
+
+#: lua/andrem222/plugins/tools.lua:154
+msgid "Workspace Diagnostics"
+msgstr "ワークスペース診断"
+
+#: lua/andrem222/plugins/tools.lua:160 lua/andrem222/plugins/ui.lua:307
+msgid "Help"
+msgstr "ヘルプ"
+
+#: lua/andrem222/plugins/tools.lua:162
+msgid "Help Preview"
+msgstr "ヘルププレビュー"
+
+#: lua/andrem222/plugins/tools.lua:166 lua/andrem222/plugins/ui.lua:180
+msgid "Keymaps"
+msgstr "キーマップ"
+
+#: lua/andrem222/plugins/tools.lua:171
+msgid "Live Grep"
+msgstr "ライブGrep"
+
+#: lua/andrem222/plugins/tools.lua:177
+msgid "Find Files"
+msgstr "ファイルの検索"
+
+#: lua/andrem222/plugins/tools.lua:197
+msgid "File Browser"
+msgstr "ファイルブラウザ"
+
+#: lua/andrem222/plugins/ui.lua:13 lua/andrem222/plugins/ui.lua:18
+#: lua/andrem222/plugins/ui.lua:19 lua/andrem222/plugins/ui.lua:20
+#: lua/andrem222/plugins/ui.lua:21 lua/andrem222/plugins/ui.lua:22
+msgid "NORMAL"
+msgstr "ノーマル"
+
+#: lua/andrem222/plugins/ui.lua:14 lua/andrem222/plugins/ui.lua:15
+#: lua/andrem222/plugins/ui.lua:16 lua/andrem222/plugins/ui.lua:17
+msgid "O-PENDING"
+msgstr "オペレータ保留中"
+
+#: lua/andrem222/plugins/ui.lua:23 lua/andrem222/plugins/ui.lua:24
+msgid "VISUAL"
+msgstr "ビジュアル"
+
+#: lua/andrem222/plugins/ui.lua:25 lua/andrem222/plugins/ui.lua:26
+msgid "V-LINE"
+msgstr "ビジュアル 行"
+
+#: lua/andrem222/plugins/ui.lua:27 lua/andrem222/plugins/ui.lua:28
+msgid "V-BLOCK"
+msgstr "ビジュアル 矩形"
+
+#: lua/andrem222/plugins/ui.lua:29
+msgid "SELECT"
+msgstr "セレクト"
+
+#: lua/andrem222/plugins/ui.lua:30
+msgid "S-LINE"
+msgstr "行指向選択"
+
+#: lua/andrem222/plugins/ui.lua:31
+msgid "S-BLOCK"
+msgstr "矩形選択"
+
+#: lua/andrem222/plugins/ui.lua:32 lua/andrem222/plugins/ui.lua:33
+#: lua/andrem222/plugins/ui.lua:34
+msgid "INSERT"
+msgstr "挿入"
+
+#: lua/andrem222/plugins/ui.lua:35 lua/andrem222/plugins/ui.lua:36
+#: lua/andrem222/plugins/ui.lua:37 lua/andrem222/plugins/ui.lua:44
+msgid "REPLACE"
+msgstr "置換"
+
+#: lua/andrem222/plugins/ui.lua:38 lua/andrem222/plugins/ui.lua:39
+#: lua/andrem222/plugins/ui.lua:40
+msgid "V-REPLACE"
+msgstr "仮想置換"
+
+#: lua/andrem222/plugins/ui.lua:41
+msgid "COMMAND"
+msgstr "コマンド"
+
+#: lua/andrem222/plugins/ui.lua:42 lua/andrem222/plugins/ui.lua:43
+msgid "EX"
+msgstr ""
+
+#: lua/andrem222/plugins/ui.lua:45
+msgid "MORE"
+msgstr "継続"
+
+#: lua/andrem222/plugins/ui.lua:46
+msgid "CONFIRM"
+msgstr "確認する"
+
+#: lua/andrem222/plugins/ui.lua:47
+msgid "SHELL"
+msgstr "シェル"
+
+#: lua/andrem222/plugins/ui.lua:48
+msgid "TERMINAL"
+msgstr "端末"
+
+#: lua/andrem222/plugins/ui.lua:58
+msgid "recording"
+msgstr "記録中"
+
+#: lua/andrem222/plugins/ui.lua:68
+msgid "Top"
+msgstr "先頭"
+
+#: lua/andrem222/plugins/ui.lua:70
+msgid "Bot"
+msgstr "末尾"
+
+#: lua/andrem222/plugins/ui.lua:108
+msgid "No Name"
+msgstr "名前なし"
+
+#: lua/andrem222/plugins/ui.lua:109
+msgid "New"
+msgstr "新しい"
+
+#: lua/andrem222/plugins/ui.lua:158
+msgid "Recent Projects:"
+msgstr "最近のプロジェクト"
+
+#: lua/andrem222/plugins/ui.lua:161
+msgid "Most Recent Files:"
+msgstr "最新のファイル"
+
+#: lua/andrem222/plugins/ui.lua:174
+msgid "Files"
+msgstr "ファイル"
+
+#: lua/andrem222/plugins/ui.lua:186
+msgid "Settings"
+msgstr "設定"
+
+#: lua/andrem222/plugins/ui.lua:192
+msgid "New File"
+msgstr "新しいファイル"
+
+#: lua/andrem222/plugins/ui.lua:302
+msgid "IncRename"
+msgstr "名前の変更"
+
+#: lua/andrem222/plugins/ui.lua:303 lua/andrem222/plugins/ui.lua:304
+msgid "Search"
+msgstr "検索"
+
+#: lua/andrem222/plugins/ui.lua:305
+msgid "Filter"
+msgstr "フィルタ"
+
+#: lua/andrem222/plugins/ui.lua:306
+msgid "Cmdline"
+msgstr "コマンドライン"
+
+#: lua/andrem222/plugins/ui.lua:308
+msgid "Input"
+msgstr "入力"
+
+#: lua/andrem222/plugins/ui.lua:348
+msgid "Messages"
+msgstr "メッセージ"
+
+#: lua/andrem222/plugins/ui.lua:354
+msgid "Error"
+msgstr "エラー"
+
+#: lua/andrem222/plugins/ui.lua:360
+msgid "Warning"
+msgstr "警戒"
+
+#: lua/andrem222/plugins/ui.lua:366
+msgid "Notify"
+msgstr "通帳"
+
+#: lua/andrem222/plugins/ui.lua:375
+msgid "Noice"
+msgstr ""
+
+#: lua/andrem222/plugins/coding.lua:9
+msgid "Inline Variable"
+msgstr "インラインの変数"
+
+#: lua/andrem222/plugins/coding.lua:10
+msgid "Extract Variable"
+msgstr "変数の抽出"
+
+#: lua/andrem222/plugins/coding.lua:11
+msgid "Extract Function"
+msgstr "関数の抽出"
+
+#: lua/andrem222/plugins/coding.lua:12
+msgid "Extract Function To File"
+msgstr "関数をファイルに抽出"
+
+#: lua/andrem222/plugins/coding.lua:13
+msgid "Extract Block"
+msgstr "ブロックを抽出"
+
+#: lua/andrem222/plugins/coding.lua:14
+msgid "Extract Block To File"
+msgstr "ブロックをファイルに抽出"
+
+#: lua/andrem222/plugins/coding.lua:15
+msgid "Inline Function"
+msgstr "インライン関数"
+
+#: lua/andrem222/plugins/coding.lua:24
+msgid "Refactoring: select a refactor to apply:"
+msgstr "リファクタリング"
+
+#: lua/andrem222/plugins/coding.lua:48
+msgid "Increment Value Under Cursor"
+msgstr "カーソル下の値を増加"
+
+#: lua/andrem222/plugins/coding.lua:49
+msgid "Decrement Value Under Cursor"
+msgstr "カーソル下の値を減算"
+
+#: lua/andrem222/debug.lua:30
+msgid "Debug"
+msgstr "デバッグ"

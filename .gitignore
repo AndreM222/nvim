@@ -1,1 +1,4 @@
 lazy-lock.json
+translations/build/*
+/lua/andrem222/po/build/*
+!/lua/andrem222/po/build/README.md
