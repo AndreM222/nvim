@@ -26,7 +26,7 @@ foreach(LANGUAGE ${LANGUAGES})
     DEPENDS ${TEMPLATE_FILE}
     COMMAND ${CMAKE_COMMAND} -E copy ${TEMPLATE_FILE} ${PO_FILE}
     COMMAND bash -c
-      "sed -i '' 's/charset=CHARSET/charset=UTF-8/' '${PO_FILE}'"
+      "sed -i '' -e 's/charset=CHARSET/charset=UTF-8/' -e 's/^\"Language:.*\"$/\"Language: ${LANGUAGE}\\\\n\"/' '${PO_FILE}'"
     COMMENT "Creating ${LANGUAGE}.po from template"
     VERBATIM
     )
