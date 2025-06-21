@@ -211,10 +211,12 @@ If no language available or translation than it will setup the default message.
 > Will improve them as I keep learning the language.
 
 Format for translations:
-```json
-    "Message to print (message Id)": {
-        "msgstr (Translated message/Id)": ""
-    },
+> [!WARNING]
+> Use the cmake automated setup for translations. For more information go to [/lua/andrem222/po/build/](/lua/andrem222/po/build/)
+
+```po
+msgid "Message to print (message Id)"
+msgstr "Translated message/Id"
 
 ```
 
