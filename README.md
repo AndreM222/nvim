@@ -123,7 +123,7 @@
 ```
 📂 $HOME/AppData/Local/Nvim
 |__📂lua/andrem222
-|   |__📂 lang
+|   |__📂 po
 |   |   |__📑 All Translations Files
 |   |__📂 pluginDev
 |   |   |__📑 All Personal Plugin Installation and Setup Files
@@ -222,7 +222,7 @@ msgstr "Translated message/Id"
 
 Location of translation files:
 ```
-📂 $HOME/AppData/Local/Nvim/lua/andrem222/lang
+📂 $HOME/AppData/Local/Nvim/lua/andrem222/po
 |__📑 All Translations Files
 ```
 
