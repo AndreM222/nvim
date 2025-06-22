@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-20 19:45-0400\n"
+"POT-Creation-Date: 2025-06-22 19:36-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -216,52 +216,56 @@ msgstr ""
 msgid "Invalid"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:142
+#: lua/andrem222/plugins/tools.lua:156
+msgid "Binary cannot be previewed"
+msgstr ""
+
+#: lua/andrem222/plugins/tools.lua:165
 msgid "Git Status"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:143 lua/andrem222/plugins/tools.lua:149
-#: lua/andrem222/plugins/tools.lua:155 lua/andrem222/plugins/tools.lua:161
-#: lua/andrem222/plugins/tools.lua:167 lua/andrem222/plugins/tools.lua:172
-#: lua/andrem222/plugins/tools.lua:178
+#: lua/andrem222/plugins/tools.lua:166 lua/andrem222/plugins/tools.lua:172
+#: lua/andrem222/plugins/tools.lua:178 lua/andrem222/plugins/tools.lua:184
+#: lua/andrem222/plugins/tools.lua:190 lua/andrem222/plugins/tools.lua:195
+#: lua/andrem222/plugins/tools.lua:201
 msgid "Results"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:144 lua/andrem222/plugins/tools.lua:150
-#: lua/andrem222/plugins/tools.lua:156 lua/andrem222/plugins/tools.lua:173
-#: lua/andrem222/plugins/tools.lua:179
+#: lua/andrem222/plugins/tools.lua:167 lua/andrem222/plugins/tools.lua:173
+#: lua/andrem222/plugins/tools.lua:179 lua/andrem222/plugins/tools.lua:196
+#: lua/andrem222/plugins/tools.lua:202
 msgid "Grep Preview"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:148
+#: lua/andrem222/plugins/tools.lua:171
 msgid "Buffers"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:154
+#: lua/andrem222/plugins/tools.lua:177
 msgid "Workspace Diagnostics"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:160 lua/andrem222/plugins/ui.lua:307
+#: lua/andrem222/plugins/tools.lua:183 lua/andrem222/plugins/ui.lua:307
 msgid "Help"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:162
+#: lua/andrem222/plugins/tools.lua:185
 msgid "Help Preview"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:166 lua/andrem222/plugins/ui.lua:180
+#: lua/andrem222/plugins/tools.lua:189 lua/andrem222/plugins/ui.lua:180
 msgid "Keymaps"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:171
+#: lua/andrem222/plugins/tools.lua:194
 msgid "Live Grep"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:177
+#: lua/andrem222/plugins/tools.lua:200
 msgid "Find Files"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:197
+#: lua/andrem222/plugins/tools.lua:220
 msgid "File Browser"
 msgstr ""
 

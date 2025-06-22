@@ -19,13 +19,11 @@ return {
             local themes = require("telescope.themes")
 
             local function copyFullPath(entry)
-                local cb_opts = vim.opt.clipboard:get()
                 vim.fn.setreg(vim.v.register, entry[1])
                 vim.notify(Msgstr("The path has been copied ") .. entry[1])
             end
 
             local function copyPath(entry)
-                local cb_opts = vim.opt.clipboard:get()
                 local dir_path = vim.fs.dirname(entry[1]) .. "/"
                 vim.fn.setreg(vim.v.register, dir_path)
 
@@ -107,30 +105,53 @@ return {
                                 local extension = split_path[#split_path]
                                 return vim.tbl_contains(image_extensions, extension)
                             end
+
                             if is_image(filepath) then
                                 local height = vim.api.nvim_win_get_height(opts.winid)
                                 local width = vim.api.nvim_win_get_width(opts.winid)
                                 local term = vim.api.nvim_open_term(bufnr, {})
+
                                 local function send_output(_, data, _)
+                                    if not vim.api.nvim_buf_is_valid(bufnr) then
+                                        return
+                                    end
                                     for _, d in ipairs(data) do
-                                        vim.api.nvim_chan_send(term, d .. '\r\n')
+                                        -- Check channel validity by attempting to send in a pcall
+                                        local ok = pcall(vim.api.nvim_chan_send, term, d .. '\r\n')
+                                        if not ok then
+                                            return -- Channel closed, exit early
+                                        end
                                     end
                                 end
 
-                                vim.fn.jobstart(
+                                local job_id = vim.fn.jobstart(
                                     {
                                         "chafa",
                                         "--center=on",
                                         "--clear",
+                                        "--format=kitty",
                                         "--format=symbols",
                                         "--view-size=" .. width .. "x" .. height,
                                         "--scale=max",
-                                        filepath -- Terminal image viewer command
+                                        filepath
                                     },
-                                    { on_stdout = send_output, stdout_buffered = true, pty = true })
+                                    {
+                                        on_stdout = send_output,
+                                        stdout_buffered = true,
+                                    }
+                                )
+
+                                -- Optional: Kill job if buffer is wiped (prevents sending to invalid terminal)
+                                vim.api.nvim_buf_attach(bufnr, false, {
+                                    on_detach = function()
+                                        if vim.fn.jobwait({ job_id }, 0)[1] == -1 then
+                                            vim.fn.jobstop(job_id)
+                                        end
+                                    end
+                                })
                             else
                                 require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid,
-                                    "Binary cannot be previewed")
+                                    Msgstr("Binary cannot be previewed"))
                             end
                         end
                     }
