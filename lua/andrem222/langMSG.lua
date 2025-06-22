@@ -3,7 +3,7 @@ local lang = string.sub(vim.v.lang, 1, 2)
 local po_path = vim.fn.stdpath('config') .. "/lua/andrem222/po/" .. lang .. ".po"
 
 -- Translation table
-local translations = {}
+local translatedTable = {}
 
 -- Basic PO file parser
 local function parse_po(path)
@@ -59,15 +59,26 @@ local function parse_po(path)
 end
 
 -- Load translations
-translations = parse_po(po_path)
+translatedTable = parse_po(po_path)
 
 --- This function returns the translation if available and not empty
 --- @param description string Description to translate
+--- @param values string[]? Optional list of variables
 --- @return string
-function Msgstr(description)
-    local translated = translations[description]
+function Msgstr(description, values)
+    local translated = translatedTable[description]
     if not translated or translated == "" then
-        return description
+        translated = description
     end
+
+    if values then
+        local unpack = table.unpack or unpack
+
+        local ok, formatted = pcall(string.format, translated, unpack(values))
+        if ok then
+            translated = formatted
+        end
+    end
+
     return translated
 end
