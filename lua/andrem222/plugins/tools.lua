@@ -20,14 +20,14 @@ return {
 
             local function copyFullPath(entry)
                 vim.fn.setreg(vim.v.register, entry[1])
-                vim.notify(Msgstr("The path has been copied ") .. entry[1])
+                vim.notify(Msgstr("The path \"%s\" has been copied", {entry[1]}))
             end
 
             local function copyPath(entry)
                 local dir_path = vim.fs.dirname(entry[1]) .. "/"
                 vim.fn.setreg(vim.v.register, dir_path)
 
-                vim.notify(Msgstr("The path has been copied ") .. dir_path)
+                vim.notify(Msgstr("The path \"%s\" has been copied", {dir_path}))
             end
 
             local function getDeviceOpenCMD()
@@ -107,6 +107,12 @@ return {
                             end
 
                             if is_image(filepath) then
+                                if not vim.fn.executable("chafa") then
+                                    require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid,
+                                        Msgstr("No image previewer found"))
+                                    return
+                                end
+
                                 local height = vim.api.nvim_win_get_height(opts.winid)
                                 local width = vim.api.nvim_win_get_width(opts.winid)
                                 local term = vim.api.nvim_open_term(bufnr, {})

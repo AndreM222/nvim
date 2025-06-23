@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-22 19:36-0400\n"
+"POT-Creation-Date: 2025-06-23 08:39-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -208,64 +208,69 @@ msgstr ""
 msgid "Refactor Menu"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:24 lua/andrem222/plugins/tools.lua:32
-msgid "The path has been copied "
+#: lua/andrem222/plugins/tools.lua:23 lua/andrem222/plugins/tools.lua:30
+#, lua-format
+msgid "The path \"%s\" has been copied"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:46
+#: lua/andrem222/plugins/tools.lua:44
 msgid "Invalid"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:156
+#: lua/andrem222/plugins/tools.lua:112
+msgid "No image previewer found"
+msgstr ""
+
+#: lua/andrem222/plugins/tools.lua:160
 msgid "Binary cannot be previewed"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:165
+#: lua/andrem222/plugins/tools.lua:169
 msgid "Git Status"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:166 lua/andrem222/plugins/tools.lua:172
-#: lua/andrem222/plugins/tools.lua:178 lua/andrem222/plugins/tools.lua:184
-#: lua/andrem222/plugins/tools.lua:190 lua/andrem222/plugins/tools.lua:195
-#: lua/andrem222/plugins/tools.lua:201
+#: lua/andrem222/plugins/tools.lua:170 lua/andrem222/plugins/tools.lua:176
+#: lua/andrem222/plugins/tools.lua:182 lua/andrem222/plugins/tools.lua:188
+#: lua/andrem222/plugins/tools.lua:194 lua/andrem222/plugins/tools.lua:199
+#: lua/andrem222/plugins/tools.lua:205
 msgid "Results"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:167 lua/andrem222/plugins/tools.lua:173
-#: lua/andrem222/plugins/tools.lua:179 lua/andrem222/plugins/tools.lua:196
-#: lua/andrem222/plugins/tools.lua:202
+#: lua/andrem222/plugins/tools.lua:171 lua/andrem222/plugins/tools.lua:177
+#: lua/andrem222/plugins/tools.lua:183 lua/andrem222/plugins/tools.lua:200
+#: lua/andrem222/plugins/tools.lua:206
 msgid "Grep Preview"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:171
+#: lua/andrem222/plugins/tools.lua:175
 msgid "Buffers"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:177
+#: lua/andrem222/plugins/tools.lua:181
 msgid "Workspace Diagnostics"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:183 lua/andrem222/plugins/ui.lua:307
+#: lua/andrem222/plugins/tools.lua:187 lua/andrem222/plugins/ui.lua:307
 msgid "Help"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:185
+#: lua/andrem222/plugins/tools.lua:189
 msgid "Help Preview"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:189 lua/andrem222/plugins/ui.lua:180
+#: lua/andrem222/plugins/tools.lua:193 lua/andrem222/plugins/ui.lua:180
 msgid "Keymaps"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:194
+#: lua/andrem222/plugins/tools.lua:198
 msgid "Live Grep"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:200
+#: lua/andrem222/plugins/tools.lua:204
 msgid "Find Files"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:220
+#: lua/andrem222/plugins/tools.lua:224
 msgid "File Browser"
 msgstr ""
 
@@ -464,5 +469,6 @@ msgid "Decrement Value Under Cursor"
 msgstr ""
 
 #: lua/andrem222/debug.lua:30
-msgid "Debug"
+#, lua-format
+msgid "Debug: %s"
 msgstr ""

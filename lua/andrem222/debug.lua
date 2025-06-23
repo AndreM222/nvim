@@ -27,7 +27,7 @@ function M._dump(value, opts)
     opts.loc = vim.fn.fnamemodify(opts.loc, ":~:.")
     local msg = vim.inspect(value)
     vim.notify(msg, vim.log.levels.INFO, {
-        title = Msgstr("Debug")..": " .. opts.loc,
+        title = Msgstr("Debug: %s", {opts.loc}),
         on_open = function(win)
             vim.wo[win].conceallevel = 3
             vim.wo[win].concealcursor = ""
