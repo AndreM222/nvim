@@ -128,8 +128,8 @@ return {
                                     {
                                         "chafa",
                                         "--center=on",
+                                        "--passthrough=tmux",
                                         "--clear",
-                                        "--format=kitty",
                                         "--format=symbols",
                                         "--view-size=" .. width .. "x" .. height,
                                         "--scale=max",
