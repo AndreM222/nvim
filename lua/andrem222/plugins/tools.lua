@@ -20,14 +20,14 @@ return {
 
             local function copyFullPath(entry)
                 vim.fn.setreg(vim.v.register, entry[1])
-                vim.notify(Msgstr("The path \"%s\" has been copied", { entry[1] }))
+                vim.notify(Msgstr("The path \"%s\" has been copied", { entry[1] }), vim.log.levels.INFO)
             end
 
             local function copyPath(entry)
                 local dir_path = vim.fs.dirname(entry[1]) .. "/"
                 vim.fn.setreg(vim.v.register, dir_path)
 
-                vim.notify(Msgstr("The path \"%s\" has been copied", { dir_path }))
+                vim.notify(Msgstr("The path \"%s\" has been copied", { dir_path }), vim.log.levels.INFO)
             end
 
             local function getDeviceOpenCMD()
@@ -41,7 +41,7 @@ return {
                 elseif vim.fn.executable('xdg-open') == 1 then
                     cmd = '!xdg-open'
                 else
-                    vim.notify(Msgstr("Invalid"), "error")
+                    vim.notify(Msgstr("Invalid"), vim.log.levels.ERROR)
                     return -1;
                 end
 
@@ -330,9 +330,9 @@ return {
                                 -- If found, change cwd
                                 if path ~= "" then
                                     vim.cmd("cd " .. path)
-                                    print("Changed directory to: " .. path)
+                                    vim.notify(Msgstr("Changed directory to: %s", { path }), vim.log.levels.INFO)
                                 else
-                                    print("Could not locate directory for selection: " .. selection.value)
+                                    vim.notify(Msgstr("Could not locate directory for selection: %s", { selection.value }), vim.log.levels.ERROR)
                                 end
                             end
                         end)

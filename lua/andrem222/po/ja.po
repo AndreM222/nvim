@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-26 09:48-0400\n"
+"POT-Creation-Date: 2025-06-26 11:16-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -285,6 +285,16 @@ msgstr "ファイルブラウザ"
 #: lua/andrem222/plugins/tools.lua:297
 msgid "Projects"
 msgstr "プロジェクト"
+
+#: lua/andrem222/plugins/tools.lua:333
+#, lua-format
+msgid "Changed directory to: %s"
+msgstr "ディレクトリを変更しました: %s"
+
+#: lua/andrem222/plugins/tools.lua:335
+#, lua-format
+msgid "Could not locate directory for selection: %s"
+msgstr "選択したディレクトリが見つかりませんでした: %s"
 
 #: lua/andrem222/plugins/ui.lua:13 lua/andrem222/plugins/ui.lua:18
 #: lua/andrem222/plugins/ui.lua:19 lua/andrem222/plugins/ui.lua:20
