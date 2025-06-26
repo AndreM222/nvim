@@ -18,6 +18,7 @@ return {
         config = function ()
 
             require("markview").setup({
+                experimental = { check_rtp_message = false },
                 preview = {
                     modes = { "n", "i", "no", "c" },
 
@@ -45,27 +46,6 @@ return {
 
                 links = {
                     enable = true
-                },
-
-                highlight_groups = {
-                    -- ["ZZ"] = function ()
-                    --     local hl = require("markview.highlights");
-                    --
-                    --     local _o = {};
-                    --
-                    --     for h = 1, 6, 1 do
-                    --         local bg = hl.get_property("bg", { "MarkviewHeading" .. h }, nil, nil);
-                    --
-                    --         if vim.islist(bg) then
-                    --             table.insert(_o, {
-                    --                 group_name = "MarkviewHeading" .. h .. "Corner",
-                    --                 value = { fg = hl.rgb_to_hex(bg) }
-                    --             });
-                    --         end
-                    --     end
-                    --
-                    --     return _o;
-                    -- end
                 },
 
                 markdown = {
