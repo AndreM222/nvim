@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 08:39-0400\n"
+"POT-Creation-Date: 2025-06-25 21:44-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -349,7 +349,8 @@ msgid "TERMINAL"
 msgstr ""
 
 #: lua/andrem222/plugins/ui.lua:58
-msgid "recording"
+#, lua-format
+msgid "recording @%s"
 msgstr ""
 
 #: lua/andrem222/plugins/ui.lua:68
@@ -361,11 +362,11 @@ msgid "Bot"
 msgstr ""
 
 #: lua/andrem222/plugins/ui.lua:108
-msgid "No Name"
+msgid "[No Name]"
 msgstr ""
 
 #: lua/andrem222/plugins/ui.lua:109
-msgid "New"
+msgid "[New]"
 msgstr ""
 
 #: lua/andrem222/plugins/ui.lua:158

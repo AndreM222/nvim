@@ -55,7 +55,7 @@ return {
                     if e.event == 'RecordingLeave' then
                         rec_msg = ''
                     else
-                        rec_msg = Msgstr('recording') .. ' @' .. vim.fn.reg_recording()
+                        rec_msg = Msgstr('recording @%s', { vim.fn.reg_recording() })
                     end
                     require('lualine').refresh()
                 end,
@@ -83,7 +83,7 @@ return {
                     always_divide_middle = true
                 },
                 sections = {
-                    lualine_a = { 'mode' },
+                    lualine_a = { { 'mode', separator = { left = '', right = "" }, right_padding = 2 } },
                     lualine_b = {
                         {
                             'branch',
@@ -105,8 +105,9 @@ return {
                         {
                             'filename',
                             symbols = {
-                                unnamed = '[' .. Msgstr('No Name') .. ']',
-                                newfile = '[' .. Msgstr('New') .. ']'
+                                unnamed = Msgstr('[No Name]'),
+                                newfile = Msgstr('[New]'),
+                                modified = '󰆓'
                             }
                         }
                     },
@@ -123,7 +124,7 @@ return {
                         'filetype'
                     },
                     lualine_y = { progressLoc },
-                    lualine_z = { 'location' }
+                    lualine_z = { { 'location', separator = { left = "", right = '' }, left_padding = 2 } }
                 },
                 inactive_sections = {
                     lualine_a = {},

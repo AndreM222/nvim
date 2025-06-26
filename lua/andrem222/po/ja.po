@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 08:39-0400\n"
+"POT-Creation-Date: 2025-06-25 21:44-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -353,8 +353,9 @@ msgid "TERMINAL"
 msgstr "端末"
 
 #: lua/andrem222/plugins/ui.lua:58
-msgid "recording"
-msgstr "記録中"
+#, lua-format
+msgid "recording @%s"
+msgstr "記録中@%s"
 
 #: lua/andrem222/plugins/ui.lua:68
 msgid "Top"
@@ -365,12 +366,12 @@ msgid "Bot"
 msgstr "末尾"
 
 #: lua/andrem222/plugins/ui.lua:108
-msgid "No Name"
-msgstr "名前なし"
+msgid "[No Name]"
+msgstr "「名前なし」"
 
 #: lua/andrem222/plugins/ui.lua:109
-msgid "New"
-msgstr "新しい"
+msgid "[New]"
+msgstr "「新しい」"
 
 #: lua/andrem222/plugins/ui.lua:158
 msgid "Recent Projects:"
