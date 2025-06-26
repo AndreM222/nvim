@@ -14,7 +14,7 @@ file(GLOB_RECURSE LUA_FILES "${NVIM_DIR}/*.lua")
 add_custom_command(
     OUTPUT ${TEMPLATE_FILE}
     DEPENDS ${LUA_FILES}
-    COMMAND bash -c "mkdir -p '${TRANSLATION_DIR}' && cd '${NVIM_DIR}' && xgettext -L Lua --keyword=Msgstr --directory=. -o '${TEMPLATE_FILE}' $(find . -name '*.lua')"
+    COMMAND bash -c "mkdir -p '${TRANSLATION_DIR}' && cd '${NVIM_DIR}' && xgettext -L Lua --keyword=Msgstr --from-code=UTF-8  --directory=. -o '${TEMPLATE_FILE}' $(find . -name '*.lua')"
     COMMENT "Generating template.pot from Lua source"
     VERBATIM
 )
