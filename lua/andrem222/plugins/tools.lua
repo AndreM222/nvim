@@ -20,14 +20,14 @@ return {
 
             local function copyFullPath(entry)
                 vim.fn.setreg(vim.v.register, entry[1])
-                vim.notify(Msgstr("The path \"%s\" has been copied", {entry[1]}))
+                vim.notify(Msgstr("The path \"%s\" has been copied", { entry[1] }))
             end
 
             local function copyPath(entry)
                 local dir_path = vim.fs.dirname(entry[1]) .. "/"
                 vim.fn.setreg(vim.v.register, dir_path)
 
-                vim.notify(Msgstr("The path \"%s\" has been copied", {dir_path}))
+                vim.notify(Msgstr("The path \"%s\" has been copied", { dir_path }))
             end
 
             local function getDeviceOpenCMD()
@@ -256,6 +256,90 @@ return {
                 end,
                 {}
             )
+
+            local function get_projects()
+                local results = {}
+
+                -- Get GHQ projects
+                local ghq_cmd = io.popen("ghq list")
+                if ghq_cmd then
+                    for line in ghq_cmd:lines() do
+                        table.insert(results, line)
+                    end
+                    ghq_cmd:close()
+                end
+
+                -- Get Git repos inside ~/.config
+                local config_cmd = io.popen(
+                    "find $HOME/.config -mindepth 1 -maxdepth 1 -type d -exec test -d '{}/.git' \\; -print")
+                if config_cmd then
+                    for line in config_cmd:lines() do
+                        -- Strip $HOME/ prefix
+                        local cleaned = line:gsub(os.getenv("HOME") .. "/", "")
+                        table.insert(results, cleaned)
+                    end
+                    config_cmd:close()
+                end
+
+                return results
+            end
+
+            vim.api.nvim_create_user_command("ProjectsList", function()
+                local pickers = require("telescope.pickers")
+                local finders = require("telescope.finders")
+                local conf = require("telescope.config").values
+                local actions = require("telescope.actions")
+                local action_state = require("telescope.actions.state")
+
+                local projects = get_projects()
+
+                pickers.new(themes.get_dropdown({
+                    prompt_title = Msgstr("Projects"),
+                    layout_config = { height = 40 },
+                }), {
+                    finder = finders.new_table({
+                        results = projects
+                    }),
+                    sorter = conf.generic_sorter({}),
+                    attach_mappings = function(prompt_bufnr, _)
+                        actions.select_default:replace(function()
+                            actions.close(prompt_bufnr)
+                            local selection = action_state.get_selected_entry()
+                            if selection then
+                                local path = ""
+
+                                -- Try ghq root first
+                                local ghq_root_cmd = io.popen("ghq root")
+                                if ghq_root_cmd then
+                                    local ghq_root = ghq_root_cmd:read("*l")
+                                    ghq_root_cmd:close()
+                                    local ghq_path = ghq_root .. "/" .. selection.value
+                                    if vim.fn.isdirectory(ghq_path) == 1 then
+                                        path = ghq_path
+                                    end
+                                end
+
+                                -- Else try $HOME
+                                if path == "" then
+                                    local home_path = os.getenv("HOME") .. "/" .. selection.value
+                                    if vim.fn.isdirectory(home_path) == 1 then
+                                        path = home_path
+                                    end
+                                end
+
+                                -- If found, change cwd
+                                if path ~= "" then
+                                    vim.cmd("cd " .. path)
+                                    print("Changed directory to: " .. path)
+                                else
+                                    print("Could not locate directory for selection: " .. selection.value)
+                                end
+                            end
+                        end)
+                        return true
+                    end,
+                }):find()
+            end, {})
 
             telescope.load_extension("file_browser")
             telescope.load_extension("ui-select")

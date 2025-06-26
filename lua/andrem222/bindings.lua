@@ -10,6 +10,7 @@ keymap.set('n', '\\g', '<Cmd>Telescope git_status<CR>', { silent = true, desc = 
 keymap.set('n', '\\\\', '<Cmd>Telescope buffers<CR>', { silent = true, desc = Msgstr("Lists open buffers in current instance") })
 keymap.set('n', '<F3>', '<Cmd>Telescope help_tags<CR>', { silent = true, desc = Msgstr("Lists available help tags and opens a new window with the relevant help info") })
 keymap.set('n', '<F4>', '<Cmd>Telescope keymaps<CR>', { silent = true, desc = Msgstr("Lists normal mode key mappings") })
+keymap.set('n', '<C-g>', '<Cmd>ProjectsList<CR>', { silent = true, desc = Msgstr("List all projects from ghq and config") })
 
 -- Moving Selections
 keymap.set({ 'n', 'i' }, '<A-Down>', '<Esc>:m .+1<CR>==', { silent = true, desc = Msgstr("Move Selection Down") })
