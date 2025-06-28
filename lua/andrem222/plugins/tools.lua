@@ -11,6 +11,7 @@ return {
         config = function()
             local telescope = require("telescope")
             local actions = require('telescope.actions')
+            local action_state = require("telescope.actions.state")
             local function telescope_buffer_dir()
                 return vim.fn.expand('%:p:h')
             end
@@ -61,7 +62,7 @@ return {
 
                                 if (cmd == -1) then return -1 end
 
-                                local entry = require("telescope.actions.state").get_selected_entry().path
+                                local entry = action_state.get_selected_entry().path
 
                                 local dir_path = vim.fs.dirname(entry) .. "/"
 
@@ -75,18 +76,18 @@ return {
 
                                 if (cmd == -1) then return -1 end
 
-                                local entry = require("telescope.actions.state").get_selected_entry().path
+                                local entry = action_state.get_selected_entry().path
 
                                 fn.execute(cmd .. ' ' .. entry)
                             end,
 
                             ["y"] = function()
-                                local entry = require("telescope.actions.state").get_selected_entry()
+                                local entry = action_state.get_selected_entry()
                                 return copyFullPath(entry)
                             end,
 
                             ["Y"] = function()
-                                local entry = require("telescope.actions.state").get_selected_entry()
+                                local entry = action_state.get_selected_entry()
                                 return copyPath(entry)
                             end,
 
@@ -288,8 +289,6 @@ return {
                 local pickers = require("telescope.pickers")
                 local finders = require("telescope.finders")
                 local conf = require("telescope.config").values
-                local actions = require("telescope.actions")
-                local action_state = require("telescope.actions.state")
 
                 local projects = get_projects()
 
@@ -301,7 +300,7 @@ return {
                         results = projects
                     }),
                     sorter = conf.generic_sorter({}),
-                    attach_mappings = function(prompt_bufnr, _)
+                    attach_mappings = function(prompt_bufnr, map)
                         actions.select_default:replace(function()
                             actions.close(prompt_bufnr)
                             local selection = action_state.get_selected_entry()
@@ -327,15 +326,62 @@ return {
                                     end
                                 end
 
-                                -- If found, change cwd
+                                -- Change cwd in Neovim
                                 if path ~= "" then
                                     vim.cmd("cd " .. path)
                                     vim.notify(Msgstr("Changed directory to: %s", { path }), vim.log.levels.INFO)
                                 else
-                                    vim.notify(Msgstr("Could not locate directory for selection: %s", { selection.value }), vim.log.levels.ERROR)
+                                    vim.notify(
+                                    Msgstr("Could not locate directory for selection: %s", { selection.value }),
+                                        vim.log.levels.ERROR)
                                 end
                             end
                         end)
+
+                        -- Map 'n' to open new tmux window with Neovim
+                        map("n", "n", function()
+                            local selection = action_state.get_selected_entry()
+                            if selection then
+                                actions.close(prompt_bufnr)
+                                local path = ""
+
+                                -- Try ghq root first
+                                local ghq_root_cmd = io.popen("ghq root")
+                                if ghq_root_cmd then
+                                    local ghq_root = ghq_root_cmd:read("*l")
+                                    ghq_root_cmd:close()
+                                    local ghq_path = ghq_root .. "/" .. selection.value
+                                    if vim.fn.isdirectory(ghq_path) == 1 then
+                                        path = ghq_path
+                                    end
+                                end
+
+                                -- Else try $HOME
+                                if path == "" then
+                                    local home_path = os.getenv("HOME") .. "/" .. selection.value
+                                    if vim.fn.isdirectory(home_path) == 1 then
+                                        path = home_path
+                                    end
+                                end
+
+                                -- If found, open new tmux window
+                                if path ~= "" then
+                                    if vim.fn.getenv("TMUX") ~= vim.NIL then
+                                        local escaped_path = path:gsub(" ", "\\ ")
+                                        local tmux_cmd = string.format("tmux new-window -c '%s' nvim", escaped_path)
+                                        os.execute(tmux_cmd)
+                                    else
+                                        vim.notify(Msgstr("Not inside a tmux session, cannot open a new tmux window"),
+                                            vim.log.levels.WARN)
+                                    end
+                                else
+                                    vim.notify(
+                                    Msgstr("Could not locate directory for selection: %s", { selection.value }),
+                                        vim.log.levels.ERROR)
+                                end
+                            end
+                        end)
+
                         return true
                     end,
                 }):find()
