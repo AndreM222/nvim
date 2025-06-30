@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 10:21-0400\n"
+"POT-Creation-Date: 2025-06-30 14:24-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -278,22 +278,31 @@ msgstr ""
 msgid "File Browser"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:296
+#: lua/andrem222/plugins/tools.lua:320
 msgid "Projects"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:332
+#: lua/andrem222/plugins/tools.lua:337
 #, lua-format
 msgid "Changed directory to: %s"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:335 lua/andrem222/plugins/tools.lua:379
+#: lua/andrem222/plugins/tools.lua:340 lua/andrem222/plugins/tools.lua:365
+#: lua/andrem222/plugins/tools.lua:390 lua/andrem222/plugins/tools.lua:415
 #, lua-format
 msgid "Could not locate directory for selection: %s"
 msgstr ""
 
-#: lua/andrem222/plugins/tools.lua:374
+#: lua/andrem222/plugins/tools.lua:360
 msgid "Not inside a tmux session, cannot open a new tmux window"
+msgstr ""
+
+#: lua/andrem222/plugins/tools.lua:385
+msgid "Not inside a tmux session, cannot open a new tmux vertical pane"
+msgstr ""
+
+#: lua/andrem222/plugins/tools.lua:410
+msgid "Not inside a tmux session, cannot open a new tmux horizontal pane"
 msgstr ""
 
 #: lua/andrem222/plugins/ui.lua:13 lua/andrem222/plugins/ui.lua:18

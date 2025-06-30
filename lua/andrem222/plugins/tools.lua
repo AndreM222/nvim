@@ -285,6 +285,30 @@ return {
                 return results
             end
 
+            local function path_projects(selection)
+                local path = ""
+                -- Try ghq root first
+                local ghq_root_cmd = io.popen("ghq root")
+                if ghq_root_cmd then
+                    local ghq_root = ghq_root_cmd:read("*l")
+                    ghq_root_cmd:close()
+                    local ghq_path = ghq_root .. "/" .. selection.value
+                    if vim.fn.isdirectory(ghq_path) == 1 then
+                        path = ghq_path
+                    end
+                end
+
+                -- Else try $HOME
+                if path == "" then
+                    local home_path = os.getenv("HOME") .. "/" .. selection.value
+                    if vim.fn.isdirectory(home_path) == 1 then
+                        path = home_path
+                    end
+                end
+
+                return path
+            end
+
             vim.api.nvim_create_user_command("ProjectsList", function()
                 local pickers = require("telescope.pickers")
                 local finders = require("telescope.finders")
@@ -305,26 +329,7 @@ return {
                             actions.close(prompt_bufnr)
                             local selection = action_state.get_selected_entry()
                             if selection then
-                                local path = ""
-
-                                -- Try ghq root first
-                                local ghq_root_cmd = io.popen("ghq root")
-                                if ghq_root_cmd then
-                                    local ghq_root = ghq_root_cmd:read("*l")
-                                    ghq_root_cmd:close()
-                                    local ghq_path = ghq_root .. "/" .. selection.value
-                                    if vim.fn.isdirectory(ghq_path) == 1 then
-                                        path = ghq_path
-                                    end
-                                end
-
-                                -- Else try $HOME
-                                if path == "" then
-                                    local home_path = os.getenv("HOME") .. "/" .. selection.value
-                                    if vim.fn.isdirectory(home_path) == 1 then
-                                        path = home_path
-                                    end
-                                end
+                                local path = path_projects(selection)
 
                                 -- Change cwd in Neovim
                                 if path ~= "" then
@@ -343,26 +348,7 @@ return {
                             local selection = action_state.get_selected_entry()
                             if selection then
                                 actions.close(prompt_bufnr)
-                                local path = ""
-
-                                -- Try ghq root first
-                                local ghq_root_cmd = io.popen("ghq root")
-                                if ghq_root_cmd then
-                                    local ghq_root = ghq_root_cmd:read("*l")
-                                    ghq_root_cmd:close()
-                                    local ghq_path = ghq_root .. "/" .. selection.value
-                                    if vim.fn.isdirectory(ghq_path) == 1 then
-                                        path = ghq_path
-                                    end
-                                end
-
-                                -- Else try $HOME
-                                if path == "" then
-                                    local home_path = os.getenv("HOME") .. "/" .. selection.value
-                                    if vim.fn.isdirectory(home_path) == 1 then
-                                        path = home_path
-                                    end
-                                end
+                                local path = path_projects(selection)
 
                                 -- If found, open new tmux window
                                 if path ~= "" then
@@ -382,6 +368,55 @@ return {
                             end
                         end)
 
+                        -- Map 'v' to open new tmux vertical pane with Neovim
+                        map("n", "v", function()
+                            local selection = action_state.get_selected_entry()
+                            if selection then
+                                actions.close(prompt_bufnr)
+                                local path = path_projects(selection)
+
+                                -- If found, open new tmux window
+                                if path ~= "" then
+                                    if vim.fn.getenv("TMUX") ~= vim.NIL then
+                                        local escaped_path = path:gsub(" ", "\\ ")
+                                        local tmux_cmd = string.format("tmux split-window -v -c '%s' nvim", escaped_path)
+                                        os.execute(tmux_cmd)
+                                    else
+                                        vim.notify(Msgstr("Not inside a tmux session, cannot open a new tmux vertical pane"),
+                                            vim.log.levels.WARN)
+                                    end
+                                else
+                                    vim.notify(
+                                    Msgstr("Could not locate directory for selection: %s", { selection.value }),
+                                        vim.log.levels.ERROR)
+                                end
+                            end
+                        end)
+
+                        -- Map 'h' to open new tmux horizontal pane with Neovim
+                        map("n", "h", function()
+                            local selection = action_state.get_selected_entry()
+                            if selection then
+                                actions.close(prompt_bufnr)
+                                local path = path_projects(selection)
+
+                                -- If found, open new tmux window
+                                if path ~= "" then
+                                    if vim.fn.getenv("TMUX") ~= vim.NIL then
+                                        local escaped_path = path:gsub(" ", "\\ ")
+                                        local tmux_cmd = string.format("tmux split-window -h -c '%s' nvim", escaped_path)
+                                        os.execute(tmux_cmd)
+                                    else
+                                        vim.notify(Msgstr("Not inside a tmux session, cannot open a new tmux horizontal pane"),
+                                            vim.log.levels.WARN)
+                                    end
+                                else
+                                    vim.notify(
+                                    Msgstr("Could not locate directory for selection: %s", { selection.value }),
+                                        vim.log.levels.ERROR)
+                                end
+                            end
+                        end)
                         return true
                     end,
                 }):find()
