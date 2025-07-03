@@ -306,7 +306,7 @@ return {
                                 and params.options.tabSize
                                 and {
                                     "--tab-width",
-                                    "2",
+                                    params.options.tabSize
                                     "--trailing-comma",
                                     "none",
                                     "--no-semi",
