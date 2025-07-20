@@ -25,8 +25,18 @@ keymap.set('v', '<A-Right>', '>gv', { desc = Msgstr("Move Selection Right") })
 
 -- Bufferline Bindings
 keymap.set('n', '<S-q>', '<Cmd>bdelete<CR>', { desc = Msgstr("Close Current Buffer") })
-keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR> {}', { desc = Msgstr("Switch To Next Buffer") })
-keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR> {}', { desc = Msgstr("Switch To Previous Buffer") })
+keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', { desc = Msgstr("Switch To Next Buffer") })
+keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', { desc = Msgstr("Switch To Previous Buffer") })
+keymap.set('n', '<A-1>', '<Cmd>BufferLineGoToBuffer 1<CR>', { desc = Msgstr("Switch To Buffer #:%s", {"1"}) })
+keymap.set('n', '<A-2>', '<Cmd>BufferLineGoToBuffer 2<CR>', { desc = Msgstr("Switch To Buffer #:%s", {"2"}) })
+keymap.set('n', '<A-3>', '<Cmd>BufferLineGoToBuffer 3<CR>', { desc = Msgstr("Switch To Buffer #:%s", {"3"}) })
+keymap.set('n', '<A-4>', '<Cmd>BufferLineGoToBuffer 4<CR>', { desc = Msgstr("Switch To Buffer #:%s", {"4"}) })
+keymap.set('n', '<A-5>', '<Cmd>BufferLineGoToBuffer 5<CR>', { desc = Msgstr("Switch To Buffer #:%s", {"5"}) })
+keymap.set('n', '<A-6>', '<Cmd>BufferLineGoToBuffer 6<CR>', { desc = Msgstr("Switch To Buffer #:%s", {"6"}) })
+keymap.set('n', '<A-7>', '<Cmd>BufferLineGoToBuffer 7<CR>', { desc = Msgstr("Switch To Buffer #:%s", {"7"}) })
+keymap.set('n', '<A-8>', '<Cmd>BufferLineGoToBuffer 8<CR>', { desc = Msgstr("Switch To Buffer #:%s", {"8"}) })
+keymap.set('n', '<A-9>', '<Cmd>BufferLineGoToBuffer 9<CR>', { desc = Msgstr("Switch To Buffer #:%s", {"9"}) })
+keymap.set('n', '<A-0>', '<Cmd>BufferLineGoToBuffer 10<CR>', { desc = Msgstr("Switch To Buffer #:%s", {"10"}) })
 
 -- Comment Binding
 keymap.set({ 'i', 'n' }, 'gcc', '<ESC><Plug>(comment_toggle_linewise_current)', { desc = Msgstr("Toggle Line Comment") })

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-30 14:24-0400\n"
+"POT-Creation-Date: 2025-07-20 17:29-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,127 +88,136 @@ msgstr ""
 msgid "Switch To Previous Buffer"
 msgstr ""
 
+#: lua/andrem222/bindings.lua:30 lua/andrem222/bindings.lua:31
 #: lua/andrem222/bindings.lua:32 lua/andrem222/bindings.lua:33
+#: lua/andrem222/bindings.lua:34 lua/andrem222/bindings.lua:35
+#: lua/andrem222/bindings.lua:36 lua/andrem222/bindings.lua:37
+#: lua/andrem222/bindings.lua:38 lua/andrem222/bindings.lua:39
+#, lua-format
+msgid "Switch To Buffer #:%s"
+msgstr ""
+
+#: lua/andrem222/bindings.lua:42 lua/andrem222/bindings.lua:43
 msgid "Toggle Line Comment"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:34
+#: lua/andrem222/bindings.lua:44
 msgid "Toggle Block Comment"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:37
+#: lua/andrem222/bindings.lua:47
 msgid "Format Lines Of Code"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:40
+#: lua/andrem222/bindings.lua:50
 msgid "Show Hover Documentation"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:41
+#: lua/andrem222/bindings.lua:51
 msgid "Peek Definition"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:42
+#: lua/andrem222/bindings.lua:52
 msgid "Go to Definition"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:43
+#: lua/andrem222/bindings.lua:53
 msgid "Find References and Implementations"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:44
+#: lua/andrem222/bindings.lua:54
 msgid "Code Action"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:45
+#: lua/andrem222/bindings.lua:55
 msgid "Jump to Next Diagnostic"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:46
+#: lua/andrem222/bindings.lua:56
 msgid "Jump to Previous Diagnostic"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:47
+#: lua/andrem222/bindings.lua:57
 msgid "Show Line Diagnostics"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:53
+#: lua/andrem222/bindings.lua:63
 msgid "Renaming with immediate visual feedback"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:56
+#: lua/andrem222/bindings.lua:66
 msgid "Horizontal Split Window"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:57
+#: lua/andrem222/bindings.lua:67
 msgid "Vertical Split Window"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:60
+#: lua/andrem222/bindings.lua:70
 msgid "Move to Left Window"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:61
+#: lua/andrem222/bindings.lua:71
 msgid "Move to Upper Window"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:62
+#: lua/andrem222/bindings.lua:72
 msgid "Move to Lower Window"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:63
+#: lua/andrem222/bindings.lua:73
 msgid "Move to Right Window"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:66
+#: lua/andrem222/bindings.lua:76
 msgid "Resize Pane Left"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:67
+#: lua/andrem222/bindings.lua:77
 msgid "Resize Pane Up"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:68
+#: lua/andrem222/bindings.lua:78
 msgid "Resize Pane Down"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:69
+#: lua/andrem222/bindings.lua:79
 msgid "Resize Pane Right"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:72
+#: lua/andrem222/bindings.lua:82
 msgid "Paste Without Copying"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:74
+#: lua/andrem222/bindings.lua:84
 msgid "Delete Without Copying"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:77
+#: lua/andrem222/bindings.lua:87
 msgid "Open Current Fold"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:78
+#: lua/andrem222/bindings.lua:88
 msgid "Close Current Fold"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:79
+#: lua/andrem222/bindings.lua:89
 msgid "Open All Folds"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:80
+#: lua/andrem222/bindings.lua:90
 msgid "Close All Folds"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:83
+#: lua/andrem222/bindings.lua:93
 msgid "Escape and clear hlsearch"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:86
+#: lua/andrem222/bindings.lua:96
 msgid "Exit Terminal Mode"
 msgstr ""
 
-#: lua/andrem222/bindings.lua:89
+#: lua/andrem222/bindings.lua:99
 msgid "Refactor Menu"
 msgstr ""
 
