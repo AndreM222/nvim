@@ -210,6 +210,7 @@ return {
                     "latex",
                     "python",
                     "javascript",
+                    "vim",
                     "vimdoc",
                     "regex",
                     (function()
