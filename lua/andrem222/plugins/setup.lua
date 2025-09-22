@@ -2,7 +2,7 @@ return {
     {
         'neovim/nvim-lspconfig', -- Setup Completion
         config = function()
-            local nvim_lsp = require("lspconfig")
+            local nvim_lsp = vim.lsp.config
 
             require('lspconfig.ui.windows').default_options.border = 'single'
 
@@ -31,13 +31,13 @@ return {
             local capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
             capabilities.offsetEncoding = { "utf-16" }
             capabilities.textDocument.foldingRange = {
-                dynamicRegistration = false,
+                dynamicRegistration = true,
                 lineFoldingOnly = true
             }
 
 
             -- TypeScript
-            nvim_lsp.ts_ls.setup({
+            nvim_lsp('ts_ls', {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 init_options = {
@@ -54,7 +54,7 @@ return {
             })
 
             -- C, C++
-            nvim_lsp.clangd.setup({
+            nvim_lsp('clangd', {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 init_options = {
@@ -62,39 +62,45 @@ return {
                 }
             })
 
+            -- swift
+            nvim_lsp('sourcekit', {
+                on_attach = on_attach,
+                capabilities = capabilities
+            })
+
             -- Docker
-            nvim_lsp.dockerls.setup({
+            nvim_lsp('dockerls', {
                 on_attach = on_attach,
                 capabilities = capabilities
             })
 
             -- CMake
-            nvim_lsp.cmake.setup({
+            nvim_lsp('cmake', {
                 on_attach = on_attach,
                 capabilities = capabilities
             })
 
             -- Markdown
-            nvim_lsp.marksman.setup({
+            nvim_lsp('marksman', {
                 on_attach = on_attach,
                 capabilities = capabilities
             })
 
             -- LaTeX
-            nvim_lsp.texlab.setup({
+            nvim_lsp('texlab', {
                 on_attach = on_attach,
                 capabilities = capabilities
             })
 
             -- C#
-            nvim_lsp.csharp_ls.setup({
+            nvim_lsp('csharp_ls', {
                 cmd = { "csharp-ls" },
                 on_attach = on_attach,
                 capabilities = capabilities
             })
 
             -- Lua
-            nvim_lsp.lua_ls.setup({
+            nvim_lsp('lua_ls', {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 -- Uncomment for editing config files
@@ -113,52 +119,52 @@ return {
             -- Setup lsp for shell
             if (os.getenv("WINDIR") and not os.getenv("WSL_INTEROP")) then
                 -- PowerShell
-                nvim_lsp.powershell_es.setup({
+                nvim_lsp('powershell_es', {
                     on_attach = on_attach,
                     capabilities = capabilities,
                     bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services"
                 })
             else
                 -- Bash
-                nvim_lsp.bashls.setup({
+                nvim_lsp('bashls', {
                     filetypes = { "sh", "zsh" },
                     on_attach = on_attach,
                     capabilities = capabilities
                 })
 
                 -- Fish
-                nvim_lsp.fish_lsp.setup({
+                nvim_lsp('fish_lsp', {
                     on_attach = on_attach,
                     capabilities = capabilities
                 })
             end
 
             -- HTML
-            nvim_lsp.html.setup({
+            nvim_lsp('html', {
                 on_attach = on_attach,
                 capabilities = capabilities
             })
 
             -- Python
-            nvim_lsp.pyright.setup({
+            nvim_lsp('pyright', {
                 on_attach = on_attach,
                 capabilities = capabilities
             })
 
             -- vim
-            nvim_lsp.vimls.setup({
+            nvim_lsp('vimls', {
                 on_attach = on_attach,
                 capabilities = capabilities
             })
 
             -- CSS
-            nvim_lsp.cssls.setup({
+            nvim_lsp('cssls', {
                 on_attach = on_attach,
                 capabilities = capabilities
             })
 
             -- TailwindCSS
-            nvim_lsp.tailwindcss.setup({
+            nvim_lsp('tailwindcss', {
                 on_attach = on_attach,
                 capabilities = capabilities
             })
@@ -258,11 +264,28 @@ return {
             -- Setuo Null-ls on mason
             require("mason-null-ls").setup({
                 automatic_installation = true,
-                ensure_installed = { "prettier", "clang-format", "eslint_d", "autopep8", "latexindent" },
+                ensure_installed = {
+                    "prettier",
+                    "clang-format",
+                    "eslint_d",
+                    "autopep8",
+                    "latexindent",
+                    (function()
+                        if (os.getenv("OSX")) then
+                            return "swiftlint"
+                        end
+                        return ""
+                    end)(),
+                    (function()
+                        if (os.getenv("OSX")) then
+                            return "swift_format"
+                        end
+                        return ""
+                    end)()
+                },
                 automatic_setup = true
             })
 
-            require 'lspconfig'.texlab.setup {}
             -- Setup lspconfig on mason
             require("mason-lspconfig").setup({
                 ensure_installed = {
@@ -301,27 +324,20 @@ return {
                 border = 'single',
                 sources = {
                     -- Formatting
-                    null_ls.builtins.formatting.prettier.with({
-                        extra_args = function(params)
-                            return params.options
-                                and params.options.tabSize
-                                and {
-                                    "--tab-width",
-                                    params.options.tabSize
-                                    "--trailing-comma",
-                                    "none",
-                                    "--no-semi",
-                                    "--arrow-parens",
-                                    "avoid"
-                                }
-                        end,
-                    }),
+                    null_ls.builtins.formatting.prettier.with({}),
 
                     null_ls.builtins.formatting.clang_format.with({
                         extra_args = { "--style", "Microsoft" }
                     }),
 
                     require("none-ls.formatting.autopep8"),
+
+                    function()
+                        if (os.getenv("OSX")) then
+                            null_ls.builtins.formatting.swift_format.with({})
+                        end
+                    end,
+
                     require("none-ls.formatting.latexindent").with({
                         indent = 4
                     }),
@@ -329,7 +345,13 @@ return {
                     -- -- Diagnostics
                     require("none-ls.code_actions.eslint_d").with({
                         diagnostics_format = '[eslint] #{m}\n(#{c})'
-                    })
+                    }),
+
+                    function()
+                        if (os.getenv("OSX")) then
+                            null_ls.builtins.diagnostics.swiftlint.with({})
+                        end
+                    end
                 }
             })
         end,
