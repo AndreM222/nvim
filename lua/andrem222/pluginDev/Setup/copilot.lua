@@ -13,7 +13,7 @@ function CopilotIcon()
                     }
                 }
             },
-            -- show_colors = true
+            show_colors = true
         }
     end
 
