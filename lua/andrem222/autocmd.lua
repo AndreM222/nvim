@@ -117,34 +117,3 @@ autocmd("TermOpen", {
         vim.opt.signcolumn = "no"
     end,
 })
-
-local markview_group = augroup('markview-setup', {})
-autocmd("ColorScheme", {
-    group = markview_group,
-    pattern = "*",
-    callback = function()
-        require("markview").setup({
-            highlight_groups = {
-                ["ZZ"] = function()
-                    local hl = require("markview.highlights");
-
-                    local _o = {};
-
-                    for h = 1, 6, 1 do
-                        local bg = hl.get_property("bg", { "MarkviewHeading" .. h }, nil, nil);
-
-                        if vim.islist(bg) then
-                            table.insert(_o, {
-                                group_name = "MarkviewHeading" .. h .. "Corner",
-                                value = { fg = hl.rgb_to_hex(bg) }
-                            });
-                        end
-                    end
-
-                    return _o;
-                end
-            },
-
-        })
-    end
-})
