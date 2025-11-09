@@ -242,7 +242,7 @@ return {
         end
     },
     {
-        'williamboman/mason.nvim',               -- Installer
+        'mason-org/mason.nvim',               -- Installer
         dependencies = {
             'jay-babu/mason-null-ls.nvim',       -- For none-ls
             'williamboman/mason-lspconfig.nvim', -- For completion
