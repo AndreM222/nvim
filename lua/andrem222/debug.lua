@@ -74,7 +74,7 @@ function M.extmark_leaks()
     dd(counts)
 end
 
-function estimateSize(value, visited)
+local function estimateSize(value, visited)
     if value == nil then
         return 0
     end

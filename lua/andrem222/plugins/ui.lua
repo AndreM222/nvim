@@ -392,7 +392,7 @@ return {
                     show_close_icon = false,
                     color_icons = true,
                     diagnostics = "nvim_lsp",
-                    diagnostics_indicator = function(count, level)
+                    diagnostics_indicator = function(_, level)
                         local icon = ""
 
                         if level:match("error") then
