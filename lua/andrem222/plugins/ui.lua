@@ -9,6 +9,32 @@ return {
             cozynight.visual.a.bg = '#ffb86c'
             cozynight.visual.b.fg = '#ffb85c'
 
+            -- table to map mode to highlight suffixes
+            local mode_to_highlight = {
+                [Msgstr('VISUAL')] = '_visual',
+                [Msgstr('V-BLOCK')] = '_visual',
+                [Msgstr('V-LINE')] = '_visual',
+                [Msgstr('SELECT')] = '_visual',
+                [Msgstr('S-LINE')] = '_visual',
+                [Msgstr('S-BLOCK')] = '_visual',
+                [Msgstr('REPLACE')] = '_replace',
+                [Msgstr('V-REPLACE')] = '_replace',
+                [Msgstr('INSERT')] = '_insert',
+                [Msgstr('COMMAND')] = '_command',
+                [Msgstr('EX')] = '_command',
+                [Msgstr('MORE')] = '_command',
+                [Msgstr('CONFIRM')] = '_command',
+                [Msgstr('TERMINAL')] = '_terminal',
+            }
+
+            --- Get highlight suffix for current mode, or inactive if not focused
+            --- This is set in lualine but I overwrite it for internationalization.
+            ---@return string mode_suffix
+            require('lualine.highlight').get_mode_suffix = function ()
+                local mode = require('lualine.utils.mode').get_mode()
+                return mode_to_highlight[mode] or '_normal'
+            end
+
             require('lualine.utils.mode').map = {
                 ['n']     = Msgstr('NORMAL'),
                 ['no']    = Msgstr('O-PENDING'),
