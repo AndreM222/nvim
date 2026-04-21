@@ -196,7 +196,7 @@ return {
         'nvim-treesitter/nvim-treesitter', -- Highlight Colors
         event = { "BufReadPost", "BufWritePost", "BufNewFile" },
         config = function()
-            require("nvim-treesitter.configs").setup({
+            require("nvim-treesitter.config").setup({
                 ensure_installed = {
                     "markdown",
                     "markdown_inline",
@@ -334,7 +334,7 @@ return {
 
                     function()
                         if (os.getenv("OSX")) then
-                            null_ls.builtins.formatting.swift_format.with({})
+                            null_ls.builtins.formatting.swiftformat.with({})
                         end
                     end,
 
