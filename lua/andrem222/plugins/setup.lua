@@ -195,54 +195,60 @@ return {
     {
         'nvim-treesitter/nvim-treesitter', -- Highlight Colors
         event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-        config = function()
-            require("nvim-treesitter.config").setup({
-                ensure_installed = {
-                    "markdown",
-                    "markdown_inline",
-                    "tsx",
-                    "toml",
-                    "php",
-                    "json",
-                    "yaml",
-                    "css",
-                    "html",
-                    "dockerfile",
-                    "lua",
-                    "cpp",
-                    "c",
-                    "cmake",
-                    "c_sharp",
-                    "latex",
-                    "python",
-                    "javascript",
-                    "vim",
-                    "vimdoc",
-                    "regex",
-                    (function()
-                        if (os.getenv("WINDIR") and not os.getenv("WSL_INTEROP")) then
-                            return "powershell"
-                        end
-                        return "fish"
-                    end)()
-                },
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = { "latex", "markdown" },
-                },
-                indent = {
-                    enable = true,
-                    disable = {},
-                },
-                autotag = { enable = true }
-            })
+        opts = {
+            ensure_installed = {
+                "markdown",
+                "markdown_inline",
+                "tsx",
+                "toml",
+                "php",
+                "json",
+                "yaml",
+                "css",
+                "html",
+                "dockerfile",
+                "lua",
+                "cpp",
+                "c",
+                "cmake",
+                "latex",
+                "python",
+                "javascript",
+                "vim",
+                "vimdoc",
+                "regex",
+                (function()
+                    if (os.getenv("WINDIR") and not os.getenv("WSL_INTEROP")) then
+                        return "powershell"
+                    end
+                    return "fish"
+                end)()
+            },
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = { "latex", "markdown" },
+            },
+            indent = {
+                enable = true,
+                disable = {},
+            },
+            autotag = { enable = true }
+        },
+        config = function(_, opts)
+            local TS = require("nvim-treesitter")
+            TS.setup(opts)
 
-            local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-            parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
-        end
+            -- MDX
+            vim.filetype.add({
+                extension = {
+                    mdx = "mdx",
+                },
+            })
+            vim.treesitter.language.register("markdown", "mdx")
+        end,
     },
     {
-        'mason-org/mason.nvim',               -- Installer
+        'mason-org/mason.nvim',                  -- Installer
         dependencies = {
             'jay-babu/mason-null-ls.nvim',       -- For none-ls
             'williamboman/mason-lspconfig.nvim', -- For completion

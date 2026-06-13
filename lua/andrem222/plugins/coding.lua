@@ -5,16 +5,6 @@ return {
     {
         "ThePrimeagen/refactoring.nvim", -- Refactoring
         config = function()
-            -- require("refactoring.refactor").refactor_names = {
-            --     [Msgstr("Inline Variable")] = "inline_var",
-            --     [Msgstr("Extract Variable")] = "extract_var",
-            --     [Msgstr("Extract Function")] = "extract",
-            --     [Msgstr("Extract Function To File")] = "extract_to_file",
-            --     [Msgstr("Extract Block")] = "extract_block",
-            --     [Msgstr("Extract Block To File")] = "extract_block_to_file",
-            --     [Msgstr("Inline Function")] = "inline_func"
-            -- }
-
             vim.api.nvim_create_user_command(
                 "RefactorList",
                 function(opts)
